@@ -1,4 +1,5 @@
-var { Command } = require("discord.js-commando");
+var { Command } = require("discord.js-commando")
+var makeshift = require("./../../resources/makeshift.json")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -14,15 +15,20 @@ module.exports = class command extends Command {
 			memberName: "namecheck",
 			description: "Check your name according to (old) rule 6",
 			guildOnly : true
-		});
+		})
 	}
 
 	async run(msg) {
-		msg.react("✅");
-		var username = msg.member.displayName.split("(").pop().split(")").shift().replace(/[^A-Za-z0-9.\-_]/g, "");
-		if(username){
-			return msg.channel.send("Your name is **" + username + "**.");
+		if(!msg.guild) return
+		if(msg.guild.id != makeshift.guild) return
+		var displayName = msg.member.displayName.split("(").pop().split(")").shift().replace(/[^A-Za-z0-9.\-_]/g, "")
+		if(!displayName) return
+		try {
+			await msg.channel.send("Your name is **" + displayName + "**.")
+			msg.react("✅")
+		} catch (e) {
+			console.error(e)
 		}
-		return;
+		
 	}
-};
+}

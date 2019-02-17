@@ -1,4 +1,5 @@
-var { Command } = require("discord.js-commando");
+var { Command } = require("discord.js-commando")
+var makeshift = require("./../../resources/makeshift.json")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -10,11 +11,17 @@ module.exports = class command extends Command {
 			memberName: "alliance",
 			group: "makeshift",
 			description: "Link to the alliance Discord"
-		});
+		})
 	}
 
 	async run(msg) {
-		msg.react("✅");
-		return msg.channel.send("We're not in an alliance right now.");
+		if(!msg.guild) return
+		if(msg.guild.id != makeshift.guild) return
+		try {
+			await msg.channel.send("We're not in an alliance right now.")
+			msg.react("✅")
+		} catch (e) {
+			console.error(e)
+		}
 	}
-};
+}
