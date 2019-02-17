@@ -1,4 +1,4 @@
-var { Command } = require("discord.js-commando");
+var { Command } = require("discord.js-commando")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -11,11 +11,11 @@ module.exports = class command extends Command {
 			memberName: "note",
 			description: "",
 			guildOnly : true
-		});
+		})
 	}
 
 	async run(msg) {
-		msg.react("❌");
-		return;
+		msg.react("❌")
+		return
 	}
-};
+}

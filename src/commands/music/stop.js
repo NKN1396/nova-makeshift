@@ -1,5 +1,5 @@
-var { Command } = require("discord.js-commando");
-var { oneLine } = require("common-tags");
+var { Command } = require("discord.js-commando")
+var { oneLine } = require("common-tags")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -13,10 +13,10 @@ module.exports = class command extends Command {
 			description: "Stop playback",
 			details: oneLine`Stops all music playback immediately and clears the entire queue.
 			Nova will leave the voice channel.`
-		});
+		})
 	}
 	
 	async run() {
-		return;
+		return
 	}
-};
+}

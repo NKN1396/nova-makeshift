@@ -1,4 +1,4 @@
-var { Command } = require("discord.js-commando");
+var { Command } = require("discord.js-commando")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -12,10 +12,10 @@ module.exports = class command extends Command {
 			memberName: "resume",
 			description: "Resume playback",
 			details: "Resumes playback after the music has been paused."
-		});
+		})
 	}
 	
 	async run() {
-		return;
+		return
 	}
-};
+}

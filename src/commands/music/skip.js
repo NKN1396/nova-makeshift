@@ -1,5 +1,5 @@
-var { Command } = require("discord.js-commando");
-var { oneLine } = require("common-tags");
+var { Command } = require("discord.js-commando")
+var { oneLine } = require("common-tags")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -13,10 +13,10 @@ module.exports = class command extends Command {
 			description: "Skip the current song",
 			details: oneLine`Skips the current song and plays the next one.
 			The song will be removed from the queue.`
-		});
+		})
 	}
 	
 	async run() {
-		return;
+		return
 	}
-};
+}
