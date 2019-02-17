@@ -1,4 +1,4 @@
-var { sample } = require("lodash");
+var { sample } = require("lodash")
 
 /**
  * Returns a single item from an array. If an invalid index is specified, a random item gets called instead.
@@ -7,6 +7,6 @@ var { sample } = require("lodash");
  * @return {Object} The object returned from the specified options.
  */
 module.exports = function (options, choice){
-	var option = options[choice - 1];
-	return option?option:sample(options);
-};
+	var option = options[choice - 1]
+	return option?option:sample(options)
+}

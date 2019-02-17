@@ -1,0 +1,9 @@
+(async () => {
+	try {
+		await
+	} catch (e) {
+		console.error(e)
+	}
+})()
+
+//if using await: Promise rejection gets handled, code interrupts and jumps into catch-block
