@@ -1,19 +1,25 @@
 {
-  "name": "nova-makeshift",
-  "version": "4.1.0",
-  "description": "A bot for commands on the Makeshift Warframe clan Discord.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "NKN1396",
-  "license": "MIT",
-  "dependencies": {
-    "discord.js": "^11.4.2",
-    "discord.js-commando": "^0.10.0",
-    "lodash": "^4.17.11",
-    "moment": "^2.24.0",
-    "pad-left": "^2.1.0"
-  },
-  "devDependencies": {}
+	"name": "nova-public",
+	"version": "4.2.0",
+	"description": "A bot for the Makeshift community and others.",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"discord.js",
+		"discord",
+		"node",
+		"bot"
+	],
+	"author": "NKN1396",
+	"license": "MIT",
+	"dependencies": {
+		"discord.js": "^11.4.2",
+		"discord.js-commando": "^0.10.0",
+		"discord.js-handles": "github:NKN1396/discord.js-handles#master",
+		"lodash": "^4.17.11",
+		"moment": "^2.24.0",
+		"pad-left": "^2.1.0"
+	}
 }
