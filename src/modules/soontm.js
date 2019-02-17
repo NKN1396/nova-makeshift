@@ -1,17 +1,29 @@
+const backend = require("./../resources/backend.json")
+const makeshift = require("./../resources/makeshift.json")
+
 /**
- * Reacts with "™" to a message ending with "soon" in order to keep up the soon™ meme.
+ * Reacts with "TM" to a message ending with "soon" in order to keep up the soon™ meme.
  * @param {*} bot The bot client.
  */
 module.exports = function(bot){
-	bot.on("message", (message)=>{
-		if(message.author.id == bot.user.id) return;
-		if(!message.content.toLowerCase().endsWith("soon")) return;
-		message.react("™")
-			.then(function(){
-				console.log("SOONTM 01: PASS");
-			})
-			.catch(function(){
-				console.error("SOONTM 01: FAIL");
-			});
-	});
-};
+	bot.on("message", message => {
+
+		//Check if message ends with "soon"
+		if(!message.content.toLowerCase().endsWith("soon")) return
+		//Check if message was issued on a guild
+		if(!message.member) return
+		//Check if message of guild was Makeshift
+		if(message.member.guild.id != makeshift.guild) return
+
+		(async () => {
+			try {
+				if(process.env.DEBUG) console.debug("SOONTM 00")
+				await message.react(message.client.guilds.get(backend.guild).emojis.get(backend.emojis.soontm))
+				if(process.env.DEBUG) console.debug("SOONTM 01")
+			} catch (e) {
+				console.error(e)
+			}
+		})()
+
+	})
+}
