@@ -1,6 +1,6 @@
-var { Command } = require("discord.js-commando");
-var selectRandomly = require("./../../utils/selectRandomly");
-var { oneLine } = require("common-tags");
+var { Command } = require("discord.js-commando")
+var selectRandomly = require("./../../utils/selectRandomly")
+var { oneLine } = require("common-tags")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -14,7 +14,7 @@ module.exports = class command extends Command {
 			group: "memes-warframe",
 			memberName: "posvet",
 			description: "I'm a PoE Veteran."
-		});
+		})
 	}
 	
 	async run(msg, args) {
@@ -38,8 +38,24 @@ module.exports = class command extends Command {
 			Comparing specific equipment checks to a convoluted raid full of bugs is absurd and beyond inaccurate.
 			Making the claim that Eidolon hunts are meta-cliques is demeaning the Tennnohood and values they are founded on.
 			This clearly is a stab at a community in Warframe that does nothing but support the rest of the player base.`
-		];
-		msg.react("✅");
-		return msg.channel.send(selectRandomly(options, args));
+		]
+		var choice = selectRandomly(options, args)
+		var out = (options.length > 1)?`${this.name} ${options.indexOf(choice) + 1}/${options.length}`:""
+		try {
+			if(out) {
+				if(choice.embed){
+					await msg.channel.send(out, choice)
+				}
+				else {
+					await msg.channel.send(`${out}\n${choice}`)
+				}
+			}
+			else {
+				await msg.channel.send(choice)
+			}
+			msg.react("✅")
+		} catch (e) {
+			console.error(e)
+		}
 	}
-};
+}

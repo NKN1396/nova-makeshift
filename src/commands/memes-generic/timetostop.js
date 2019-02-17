@@ -1,5 +1,5 @@
-var { Command } = require("discord.js-commando");
-var selectRandomly = require("./../../utils/selectRandomly");
+var { Command } = require("discord.js-commando")
+var selectRandomly = require("./../../utils/selectRandomly")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -14,14 +14,30 @@ module.exports = class command extends Command {
 			group: "memes-generic",
 			memberName: "timetostop",
 			description: "It's time to stop!"
-		});
+		})
 	}
 	
 	async run(msg, args) {
 		var options = [
 			"https://youtu.be/2k0SmqbBIpQ"
-		];
-		msg.react("✅");
-		return msg.channel.send(selectRandomly(options, args));
+		]
+		var choice = selectRandomly(options, args)
+		var out = (options.length > 1)?`${this.name} ${options.indexOf(choice) + 1}/${options.length}`:""
+		try {
+			if(out) {
+				if(choice.embed){
+					await msg.channel.send(out, choice)
+				}
+				else {
+					await msg.channel.send(`${out}\n${choice}`)
+				}
+			}
+			else {
+				await msg.channel.send(choice)
+			}
+			msg.react("✅")
+		} catch (e) {
+			console.error(e)
+		}
 	}
-};
+}

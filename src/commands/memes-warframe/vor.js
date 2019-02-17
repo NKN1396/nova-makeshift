@@ -1,6 +1,6 @@
-var { Command } = require("discord.js-commando");
-var selectRandomly = require("./../../utils/selectRandomly");
-var { oneLine } = require("common-tags");
+var { Command } = require("discord.js-commando")
+var selectRandomly = require("./../../utils/selectRandomly")
+var { oneLine } = require("common-tags")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -14,7 +14,7 @@ module.exports = class command extends Command {
 			group: "memes-warframe",
 			memberName: "vor",
 			description: "Look at them, ..."
-		});
+		})
 	}
 	
 	async run(msg, args) {
@@ -37,8 +37,24 @@ module.exports = class command extends Command {
 			They will learn its simple truth.
 			The Tenno are lost, and they will resist.
 			But I, Vor, will cleanse this place of their impurity.`
-		];
-		msg.react("✅");
-		return msg.channel.send(selectRandomly(options, args));
+		]
+		var choice = selectRandomly(options, args)
+		var out = (options.length > 1)?`${this.name} ${options.indexOf(choice) + 1}/${options.length}`:""
+		try {
+			if(out) {
+				if(choice.embed){
+					await msg.channel.send(out, choice)
+				}
+				else {
+					await msg.channel.send(`${out}\n${choice}`)
+				}
+			}
+			else {
+				await msg.channel.send(choice)
+			}
+			msg.react("✅")
+		} catch (e) {
+			console.error(e)
+		}
 	}
-};
+}

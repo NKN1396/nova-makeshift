@@ -1,5 +1,5 @@
-var { Command } = require("discord.js-commando");
-var selectRandomly = require("./../../utils/selectRandomly");
+var { Command } = require("discord.js-commando")
+var selectRandomly = require("./../../utils/selectRandomly")
 
 module.exports = class command extends Command {
 	constructor(client) {
@@ -14,7 +14,7 @@ module.exports = class command extends Command {
 			group: "memes-warframe",
 			memberName: "jv",
 			description: "Jordas Verdict"
-		});
+		})
 	}
 	
 	async run(msg, args) {
@@ -24,8 +24,24 @@ module.exports = class command extends Command {
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439753672491008010/jv3.png"}}},
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439931426683617291/jv4.png"}}},
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439932458385932292/jv5.png"}}}
-		];
-		msg.react("✅");
-		return msg.channel.send(selectRandomly(options, args));
+		]
+		var choice = selectRandomly(options, args)
+		var out = (options.length > 1)?`${this.name} ${options.indexOf(choice) + 1}/${options.length}`:""
+		try {
+			if(out) {
+				if(choice.embed){
+					await msg.channel.send(out, choice)
+				}
+				else {
+					await msg.channel.send(`${out}\n${choice}`)
+				}
+			}
+			else {
+				await msg.channel.send(choice)
+			}
+			msg.react("✅")
+		} catch (e) {
+			console.error(e)
+		}
 	}
-};
+}
