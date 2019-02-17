@@ -1,51 +1,61 @@
 //Config
-const trigger = "Nova,";
+const trigger = "Nova,".toLowerCase()
 
 //Dependencies
-var { sample } = require("lodash");
+var { sample } = require("lodash")
 
 /**
- * Makes Nova respond with sassy comments after asked a question.
+ * Makes Nova respond with sassy comments after being asked a question.
  * @param {*} bot The bot client.
  */
 module.exports = function(bot){
 	bot.on("message", (message)=>{
-		if(!message.content.toLowerCase().startsWith(trigger.toLowerCase())) return;
-		message.channel.send(answer(message))
-			.then(function(){
-				console.log("SASSYNOVA 01: PASS");
-			})
-			.catch(function(){
-				console.error("SASSYNOVA 01: FAIL");
-			});
-	});
-};
 
-function answer(message){
+		if(!message.content.toLowerCase().startsWith(trigger)) return
+
+		(async () => {
+			try {
+				if(process.env.DEBUG) console.debug("SASSYNOVA 00")
+				await message.channel.send(pickAnswer(message))
+				if(process.env.DEBUG) console.debug("SASSYNOVA 01")
+			} catch (e) {
+				console.error(e)
+			}
+		})()
+
+	})
+}
+
+function pickAnswer(message){
 	if(message.content.toLowerCase().match("zephyr")){
-		return "Zephyr is a useless piece of shit, stop asking.";
+		return "Zephyr is a useless piece of shit, stop asking."
 	}
-	var numberRandom = Math.random();
+
+	var numberRandom = Math.random()
+
 	//LEGENDARY
-	if((numberRandom*10000)<1){
-		return (`Love you, ${message.author} 😘`);
+	if((numberRandom*1000)<1){
+		return (`Love you, ${message.author} 😘`)
 	}
+
 	//RARE
 	if((numberRandom*15)<1){
+		const nsfw = message.channel.nsfw?true:false
 		let responses = [
 			"My answer-module broke. Could you ask me again?",
 			"Oh my gosh.. 🙄",
 			"¯\\\\_(ツ)\\_/¯",
-			"Are you okay?",
+			nsfw?"Are you retarded?":"Are you okay?",
 			"Ask me later",
 			"Try again",
 			"Don't annoy me",
 			"Alright 🙄",
 			"You sound like a Limbo-main.",
-			"Fuck off"
-		];
-		return sample(responses);
+			nsfw?"Fuck off.":"..."
+		]
+		return sample(responses)
 	}
+
 	//UNCOMMON
 	if((numberRandom*5)<1){
 		let responses = [
@@ -59,9 +69,10 @@ function answer(message){
 			"._.",
 			"Okay",
 			"N-No!",
-		];
-		return sample(responses);
+		]
+		return sample(responses)
 	}
+
 	//COMMON
 	let responses = [
 		"Certainly",
@@ -91,6 +102,7 @@ function answer(message){
 		"No Thanks!",
 		"Not on my watch",
 		"**NEIN!**"
-	];
-	return sample(responses);
+	]
+	return sample(responses)
+
 }
