@@ -72,3 +72,20 @@ require("./src/modules/prism2")(makeshiftbot)
 
 //Start bot
 makeshiftbot.login(token)
+
+makeshiftbot.on("ready", () => {
+	atNovaHelp(makeshiftbot.user)
+})
+makeshiftbot.on("resume", ()=> {
+	atNovaHelp(makeshiftbot.user)
+})
+
+function atNovaHelp(user){
+	user.setPresence({
+		game: {
+			name: "@Nova help",
+			type: "PLAYING"
+		},
+		status: "online"
+	})
+}
