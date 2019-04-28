@@ -15,7 +15,7 @@ const makeshift = require("./src/resources/makeshift.json")
 
 //Create new Discord client
 var makeshiftbot = new commando.Client({
-	commandPrefix : "/",
+	commandPrefix : "!",
 	unknownCommandResponse : false,
 	owner : "153595272465743872"
 })
