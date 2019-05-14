@@ -20,13 +20,19 @@ module.exports = class command extends Command {
 	}
 
 	async run(msg) {
+		
+		var embed = {
+			embed: {
+				test: "https://tennoware.com/"
+			}
+		}
 		var out = 
 		"**Builds:**\n" +
 		"Warframe builder:\n" +
 		"*<http://warframe-builder.com/>*\n" +
 		"distant Observer YouTube channel:\n" +
-		"*<https://www.youtube.com/channel/UC13043Ga8_N3kItV22oHazQ>*";
-		msg.react("✅");
-		return msg.channel.send(out);
+		"*<https://www.youtube.com/channel/UC13043Ga8_N3kItV22oHazQ>*"
+		msg.react("✅")
+		return msg.channel.send(out)
 	}
-};
+}
