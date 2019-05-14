@@ -42,33 +42,31 @@ async function create_new_voiceChannel(newMember, traceId){
 
 	const channelNames = require("./resources/channelNames.json")
 	const name = sample(channelNames)
-	const optionOverrides = [
-		{	//make first member in channel owner
+	//const name = "Talk " + (newMember.guild.channels.get(makeshift.categories.voice).children.filter(child => child.type == "voice").size - 1)
+	const options = {
+		type: "voice",
+		name: name,
+		position: newMember.guild.channels.get(makeshift.categories.voice).children.size - 3,
+		parent: newMember.guild.channels.get(makeshift.categories.voice)
+	}
+	const permissionOverwrites = [
+		{	//Make first member in channel owner
 			type: "member",
 			id: newMember.id,
 			allow: 17825808
-		},
-		{	//hide for everyone temporarily so the channel list doesn't earthquake
-			type: "role",
-			id: newMember.guild.defaultRole,
-			deny: 1024
 		}
 	]
-
+	
 	try {
 		if(process.env.DEBUG) console.log(`VOICEMAGIC A 00 (ID: ${traceId})`)
+		//Create new channel
 		var channel = await newMember.guild.createChannel(
-			name, "voice", optionOverrides, ("Requested by " + newMember.displayName)
+			name, options, permissionOverwrites, (`Requested by ${newMember} (${newMember.displayName})`)
 		)
 		if(process.env.DEBUG) console.log(`VOICEMAGIC A 01 (ID: ${traceId})`)
-		await channel.setParent(makeshift.categories.voice) //move channel in voice category
-		if(process.env.DEBUG) console.log(`VOICEMAGIC A 02 (ID: ${traceId})`)
-		await channel.setPosition(newMember.guild.channels.get(makeshift.categories.voice).children.size - 4) //move channel to correct position
-		if(process.env.DEBUG) console.log(`VOICEMAGIC A 03 (ID: ${traceId})`)
-		await channel.permissionOverwrites.get(newMember.guild.defaultRole.id).delete() //delete overwrite for @everyone (make channel visible again)
-		if(process.env.DEBUG) console.log(`VOICEMAGIC A 04 (ID: ${traceId})`)
+		//Move member into new channel
 		await newMember.setVoiceChannel(channel)
-		if(process.env.DEBUG) console.log(`VOICEMAGIC A 05 (ID: ${traceId})`)
+		if(process.env.DEBUG) console.log(`VOICEMAGIC A 02 (ID: ${traceId})`)
 	} catch (e) {
 		console.error(e)
 	}
@@ -115,13 +113,17 @@ function cleanup_empty_voiceChannel(voiceChannel, traceId) {
 	if(protectedChannel) return
 
 	if(process.env.DEBUG) console.log(`VOICEMAGIC D 00 (ID: ${traceId})`)
-	setTimeout(async function(){	//queue channel for deletion and wait 30s
+	//Queue channel for deletion and wait 30s
+	setTimeout(async function(){
 		try {
 			if(process.env.DEBUG) console.log(`VOICEMAGIC D 01 (ID: ${traceId})`)
+			//Check if voice channel still exists
 			if(!voiceChannel) return
+			//Check if there's no person in the channel
 			if(voiceChannel.members.first()) return
 			if(process.env.DEBUG) console.log(`VOICEMAGIC D 02 (ID: ${traceId})`)
-			await voiceChannel.delete()	//delete channel
+			//Delete channel
+			await voiceChannel.delete()
 			if(process.env.DEBUG) console.log(`VOICEMAGIC D 03 (ID: ${traceId})`)
 		} catch (e) {
 			console.error(e)
