@@ -26,7 +26,7 @@ module.exports = class command extends Command {
 			group: "resources",
 			memberName: "market",
 			description: "Popular Warframe trading sites"
-		});
+		})
 	}
 
 	async run(msg) {
@@ -40,8 +40,8 @@ module.exports = class command extends Command {
 		"*<https://nexus-stats.com/>*\n" + 
 		"\n" +
 		"__Warframe Trader__, a website for Riven trading:\n" +
-		"*<https://www.wftrader.com/>*";
-		msg.react("✅");
-		return msg.channel.send(out);
+		"*<https://www.wftrader.com/>*"
+		msg.react("✅")
+		return msg.channel.send(out)
 	}
-};
+}
