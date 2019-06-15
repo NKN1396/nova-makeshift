@@ -20,7 +20,7 @@ module.exports = class command extends Command {
 			],
 			group: "memes-generic",
 			memberName: "noanime",
-			description: ""
+			description: "Remember - no Anime."
 		})
 	}
 	
