@@ -1,23 +1,25 @@
-var { Command } = require("discord.js-commando");
+var { Command } = require("discord.js-commando")
 
-module.exports = class command extends Command {
+module.exports = class command_debug extends Command {
+
 	constructor(client) {
-		super(client, {
+		let options = {
 			name: "debug",
-			aliases: [
-				"debug"
-			],
 			memberName: "debug",
 			group: "developer",
 			description: "A command used for testing various things. ",
 			ownerOnly : true
-		});
+		}
+		super(client, options)
 	}
 
-	async run(msg) {
-		msg.react("✅");
-		return msg.channel.send(
-			"Nothing"
-		);
+	async run(message) {
+		try {
+			await message.react("✅")
+			return message.channel.send("Literally nothing")
+		} catch (e) {
+			console.error(e)
+		}
 	}
-};
+	
+}

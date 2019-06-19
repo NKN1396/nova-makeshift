@@ -33,8 +33,9 @@ makeshiftbot.registry
 		["other", "Other"],
 		["moderative", "Moderative"]
 	])
-	.registerDefaultGroups()
+	.registerCommandsIn(path.join(__dirname, "src/commands"))
 	.registerDefaultTypes()
+	.registerDefaultGroups()
 	.registerDefaultCommands(
 		{
 			"help" : true,
@@ -44,7 +45,7 @@ makeshiftbot.registry
 			"commandState" : false
 		}
 	)
-	.registerCommandsIn(path.join(__dirname, "src/commands"))
+
 
 const handlerOptions = {
 	logAllGuilds: false,
@@ -71,9 +72,11 @@ require("./src/modules/soontm")(makeshiftbot)
 require("./src/modules/voicemagic")(makeshiftbot)
 require("./src/modules/prism2")(makeshiftbot)
 
+/*
 //Start bot
 makeshiftbot.login(token)
-
+	.catch(console.error)
+//*/
 makeshiftbot.on("ready", () => {
 	atNovaHelp(makeshiftbot.user)
 })
@@ -90,3 +93,5 @@ function atNovaHelp(user){
 		status: "online"
 	})
 }
+
+console.log(makeshiftbot.registry.commands.first())
