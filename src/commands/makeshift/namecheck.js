@@ -21,6 +21,7 @@ module.exports = class command extends Command {
 	async run(msg) {
 		if(!msg.guild) return
 		if(msg.guild.id != makeshift.guild) return
+		//TODO: return wether or not name is valid (e.g. double brackets or illegal character)
 		var displayName = msg.member.displayName.split("(").pop().split(")").shift().replace(/[^A-Za-z0-9.\-_]/g, "")
 		if(!displayName) return
 		try {
