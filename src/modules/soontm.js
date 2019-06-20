@@ -15,15 +15,8 @@ module.exports = function(bot){
 		//Check if message of guild was Makeshift
 		if(message.member.guild.id != makeshift.guild) return
 
-		(async () => {
-			try {
-				if(process.env.DEBUG) console.debug("SOONTM 00")
-				await message.react(message.client.guilds.get(backend.guild).emojis.get(backend.emojis.soontm))
-				if(process.env.DEBUG) console.debug("SOONTM 01")
-			} catch (e) {
-				console.error(e)
-			}
-		})()
+		message.react(message.client.guilds.get(backend.guild).emojis.get(backend.emojis.soontm))
+			.catch(console.error)
 
 	})
 }

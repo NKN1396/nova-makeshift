@@ -6,58 +6,52 @@ var { sample } = require("lodash")
 
 /**
  * Makes Nova respond with sassy comments after being asked a question.
- * @param {*} bot The bot client.
+ * @param {*} client The bot client.
  */
-module.exports = function(bot){
-	bot.on("message", (message)=>{
+module.exports = function(client){
+	client.on("message", async message => {
 
 		if(!message.content.toLowerCase().startsWith(trigger)) return
 
-		(async () => {
-			try {
-				if(process.env.DEBUG) console.debug("SASSYNOVA 00")
-				await message.channel.send(pickAnswer(message))
-				if(process.env.DEBUG) console.debug("SASSYNOVA 01")
-			} catch (e) {
-				console.error(e)
-			}
-		})()
+		message.channel.send(pickAnswer(message))
+			.catch(console.error)
 
 	})
 }
 
+/**
+ * Picks a sassy response for Nova.
+ * @param {*} message The message to respond to.
+ * @returns {String} The response.
+ */
 function pickAnswer(message){
-	if(message.content.toLowerCase().match("zephyr")){
-		return "Zephyr is a useless piece of shit, stop asking."
-	}
+	let bNsfw = message.channel.nsfw
 
-	var numberRandom = Math.random()
+	//Appropriate response to Zephyr
+	if(message.content.toLowerCase().match("zephyr")) return `Zephyr is a useless piece of ${bNsfw?"shit":"junk"}, stop asking.`
 
+	//Randomized answers
+	let nRandom = Math.random()
 	//LEGENDARY
-	if((numberRandom*1000)<1){
-		return (`Love you, ${message.author} 😘`)
-	}
-
+	if((nRandom*1000)<1) return (`Love you, ${message.author} 😘`)
 	//RARE
-	if((numberRandom*15)<1){
-		const nsfw = message.channel.nsfw?true:false
+	if((nRandom*15)<1){
 		let responses = [
 			"My answer-module broke. Could you ask me again?",
 			"Oh my gosh.. 🙄",
 			"¯\\\\_(ツ)\\_/¯",
-			nsfw?"Are you retarded?":"Are you okay?",
+			bNsfw?"Are you retarded?":"Are you okay?",
 			"Ask me later",
 			"Try again",
 			"Don't annoy me",
 			"Alright 🙄",
 			"You sound like a Limbo-main.",
-			nsfw?"Fuck off.":"..."
+			bNsfw?"Fuck off.":"..."
 		]
 		return sample(responses)
 	}
-
 	//UNCOMMON
-	if((numberRandom*5)<1){
+	if((nRandom*5)<1){
 		let responses = [
 			"Not sure",
 			"Dunno",
@@ -72,7 +66,6 @@ function pickAnswer(message){
 		]
 		return sample(responses)
 	}
-
 	//COMMON
 	let responses = [
 		"Certainly",
@@ -104,5 +97,4 @@ function pickAnswer(message){
 		"**NEIN!**"
 	]
 	return sample(responses)
-
 }
