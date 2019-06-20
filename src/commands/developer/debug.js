@@ -1,4 +1,4 @@
-var { Command } = require("discord.js-commando")
+const { Command } = require("discord.js-commando")
 
 module.exports = class command_debug extends Command {
 
@@ -15,10 +15,10 @@ module.exports = class command_debug extends Command {
 
 	async run(message) {
 		try {
-			await message.react("✅")
-			return message.channel.send("Literally nothing")
-		} catch (e) {
-			console.error(e)
+			await message.channel.send("Literally nothing")
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
 		}
 	}
 	

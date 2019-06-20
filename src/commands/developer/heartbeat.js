@@ -1,21 +1,21 @@
-var { Command } = require("discord.js-commando");
+const { Command } = require("discord.js-commando")
 
 module.exports = class command extends Command {
 	constructor(client) {
-		super(client, {
+		let options = {
 			name: "heartbeat",
 			aliases: [
-				"heartbeat",
 				"ping"
 			],
 			memberName: "heartbeat",
 			group: "developer",
 			description: "Checks which parts of Nova are running"
-		});
+		}
+		super(client, options)
 	}
 
 	async run(msg) {
-		msg.react("💙");
-		return;
+		msg.react("💙")
+			.catch(console.error)
 	}
-};
+}

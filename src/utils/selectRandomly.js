@@ -7,6 +7,6 @@ var { sample } = require("lodash")
  * @return {Object} The object returned from the specified options.
  */
 module.exports = function (options, choice){
-	var option = options[choice - 1]
+	let option = options[choice - 1]
 	return option?option:sample(options)
 }

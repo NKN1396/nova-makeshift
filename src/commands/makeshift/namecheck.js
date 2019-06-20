@@ -1,9 +1,9 @@
-var { Command } = require("discord.js-commando")
-var makeshift = require("./../../resources/makeshift.json")
+const { Command } = require("discord.js-commando")
+const makeshift = require("./../../resources/makeshift.json")
 
 module.exports = class command extends Command {
 	constructor(client) {
-		super(client, {
+		let options = {
 			name: "namecheck",
 			aliases: [
 				"c",
@@ -15,21 +15,21 @@ module.exports = class command extends Command {
 			memberName: "namecheck",
 			description: "Check your name according to (old) rule 6",
 			guildOnly : true
-		})
+		}
+		super(client, options)
 	}
 
-	async run(msg) {
-		if(!msg.guild) return
-		if(msg.guild.id != makeshift.guild) return
+	async run(message) {
+		if(!message.guild) return
+		if(message.guild.id != makeshift.guild) return
 		//TODO: return wether or not name is valid (e.g. double brackets or illegal character)
-		var displayName = msg.member.displayName.split("(").pop().split(")").shift().replace(/[^A-Za-z0-9.\-_]/g, "")
+		let displayName = message.member.displayName.split("(").pop().split(")").shift().replace(/[^A-Za-z0-9.\-_]/g, "")
 		if(!displayName) return
 		try {
-			await msg.channel.send("Your name is **" + displayName + "**.")
-			msg.react("✅")
-		} catch (e) {
-			console.error(e)
+			await message.channel.send(`Your name is **${displayName}**.`)
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
 		}
-		
 	}
 }

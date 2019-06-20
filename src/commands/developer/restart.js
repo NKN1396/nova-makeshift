@@ -1,8 +1,8 @@
-var { Command } = require("discord.js-commando");
+const { Command } = require("discord.js-commando")
 
 module.exports = class command extends Command {
 	constructor(client) {
-		super(client, {
+		let options = {
 			name: "restart",
 			aliases: [
 				"restart"
@@ -11,15 +11,15 @@ module.exports = class command extends Command {
 			group: "developer",
 			description: "Restarts a part of Nova",
 			ownerOnly : true
-		});
+		}
+		super(client, options)
 	}
 
-	async run(msg, args) {
-		if(args.toLowerCase() == "nova-makeshift"){
-			msg.react("💙");
-			console.log("Bot restarted by user " + msg.author.tag);
-			process.exit(1);
-		}
-		return;
+	async run(message, args) {
+		if(args.toLowerCase() != "nova-makeshift") return
+		await message.react("💙")
+			.catch(console.error)
+		console.log(`Bot restarted by user ${message.author.tag}`)
+		process.exit(1)
 	}
-};
+}

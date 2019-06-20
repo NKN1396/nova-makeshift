@@ -1,9 +1,9 @@
-var { Command } = require("discord.js-commando")
-var makeshift = require("./../../resources/makeshift.json")
+const { Command } = require("discord.js-commando")
+const makeshift = require("./../../resources/makeshift.json")
 
 module.exports = class command extends Command {
 	constructor(client) {
-		super(client, {
+		let options = {
 			name: "map",
 			aliases: [
 				"map",
@@ -13,13 +13,14 @@ module.exports = class command extends Command {
 			group: "makeshift",
 			memberName: "map",
 			description: "Map of the Makeshift dojo"
-		})
+		}
+		super(client, options)
 	}
 
-	async run(msg) {
-		if(!msg.guild) return
-		if(msg.guild.id != makeshift.guild) return
-		const embed = {
+	async run(message) {
+		if(!message.guild) return
+		if(message.guild.id != makeshift.guild) return
+		let embed = {
 			embed: {
 				description: "Makeshift clan dojo map",
 				image: {
@@ -28,10 +29,10 @@ module.exports = class command extends Command {
 			}
 		}
 		try {
-			await msg.channel.send(embed)
-			msg.react("✅")
-		} catch (e) {
-			console.error(e)
+			await message.react("✅")
+			message.channel.send(embed)
+		} catch (error) {
+			console.error(error)
 		}
 	}
 }

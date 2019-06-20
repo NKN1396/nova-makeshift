@@ -1,11 +1,10 @@
-var { Command } = require("discord.js-commando")
-var { oneLine } = require("common-tags")
-var { stripIndents } = require("common-tags")
-var makeshift = require("./../../resources/makeshift.json")
+const { Command } = require("discord.js-commando")
+const { oneLine, stripIndents } = require("common-tags")
+const makeshift = require("./../../resources/makeshift.json")
 
 module.exports = class command extends Command {
 	constructor(client) {
-		super(client, {
+		let options = {
 			name: "rules",
 			aliases: [
 				"rules",
@@ -14,23 +13,24 @@ module.exports = class command extends Command {
 			group: "makeshift",
 			memberName: "rules",
 			description: "Lists all or just a specific rule of the Makeshift clan"
-		})
+		}
+		super(client, options)
 	}
 
-	async run(msg, args) {
-		if(!msg.guild) return
-		if(msg.guild.id != makeshift.guild) return
+	async run(message, args) {
+		if(!message.guild) return
+		if(message.guild.id != makeshift.guild) return
 		try {
-			await msg.channel.send(getResponse(msg, args))
-			msg.react("✅")
-		} catch (e) {
-			console.error(e)
+			let response = getResponse(args)
+			await message.channel.send(response)
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
 		}
-		
 	}
 }
 
-function getResponse(msg, args){
+function getResponse(args){
 	if(!args) return stripIndents`**General rules**:
 	\`1.\` Use common sense
 	\`2.\` Feel free to ask
