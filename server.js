@@ -72,7 +72,7 @@ require("./src/modules/soontm")(makeshiftbot)
 require("./src/modules/voicemagic")(makeshiftbot)
 require("./src/modules/prism2")(makeshiftbot)
 
-/*
+//*
 //Start bot
 makeshiftbot.login(token)
 	.catch(console.error)
@@ -93,5 +93,3 @@ function atNovaHelp(user){
 		status: "online"
 	})
 }
-
-console.log(makeshiftbot.registry.commands.first())
