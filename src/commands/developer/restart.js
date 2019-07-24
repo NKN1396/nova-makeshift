@@ -1,4 +1,5 @@
 const Command = require("./../../utils/novaCommand")
+const { name } = require("./../../../package.json")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -12,7 +13,7 @@ module.exports = class extends Command {
 	}
 
 	async run(message, args) {
-		if(args.toLowerCase() != "nova-makeshift") return
+		if(args.toLowerCase() !== name) return
 		await message.react("💙")
 			.catch(console.error)
 		console.log(`Bot restarted by user ${message.author.tag}`)

@@ -14,13 +14,14 @@ module.exports = class extends Command {
 	}
 
 	async run(message) {
-		let textInfo =
-		stripIndents`__**Nova version ${info.version}**__
-		${info.description}
-		Programmed by ${info.author}.
-		*Please issue the \`/help\` command if you wish to view a list of commands.*`
 		try {
-			await message.channel.send(textInfo)
+			await message.channel.send(
+				stripIndents`__**Nova version ${info.version}**__
+				${info.description}
+				Programmed by ${info.author}.
+				GitHub: <${info.repository.url}>
+				*Please issue the \`${message.client.commandPrefix}help\` command if you wish to view a list of commands.*`
+			)
 			message.react("✅")
 		} catch (error) {
 			console.error(error)
