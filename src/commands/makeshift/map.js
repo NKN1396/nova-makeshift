@@ -1,7 +1,7 @@
 const Command = require("./../../utils/novaCommand")
 const makeshift = require("./../../resources/makeshift.json")
 
-module.exports = class command extends Command {
+module.exports = class extends Command {
 	constructor(client) {
 		let options = {
 			group: "makeshift",

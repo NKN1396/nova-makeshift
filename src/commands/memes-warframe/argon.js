@@ -1,7 +1,7 @@
 var { Command } = require("discord.js-commando")
 var selectRandomly = require("./../../utils/selectRandomly")
 
-module.exports = class command extends Command {
+module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "argon",

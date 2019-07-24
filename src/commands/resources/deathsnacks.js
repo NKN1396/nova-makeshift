@@ -1,6 +1,6 @@
 var { Command } = require("discord.js-commando");
 
-module.exports = class command extends Command {
+module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "deathsnacks",

@@ -4,7 +4,7 @@ var { stripIndents } = require("common-tags")
 
 const guild_makeshift_id = "272036959348588555"
 
-module.exports = class command extends Command {
+module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "colors",

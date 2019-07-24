@@ -1,6 +1,6 @@
 var Command = require("./../../utils/novaCommand")
 
-module.exports = class command extends Command {
+module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			group: "moderative",
