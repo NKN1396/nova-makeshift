@@ -1,4 +1,4 @@
-const { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 const { oneLine, stripIndents } = require("common-tags")
 const makeshift = require("./../../resources/makeshift.json")
 
@@ -50,13 +50,8 @@ const rules = {
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "rules",
-			aliases: [
-				"rules",
-				"rule"
-			],
-			group: "makeshift",
-			memberName: "rules",
+			name: "makeshift:rules",
+			aliases: [ "rule" ],
 			description: "Lists all or just a specific rule of the Makeshift clan"
 		}
 		super(client, options)

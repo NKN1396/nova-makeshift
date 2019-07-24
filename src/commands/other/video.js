@@ -1,16 +1,10 @@
-const { Command } = require("discord.js-commando")
-const makeshift = require("./../../resources/makeshift.json")
+const Command = require("../../utils/novaCommand")
 
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "video",
-			aliases: [
-				"video",
-				"webcame"
-			],
-			group: "makeshift",
-			memberName: "video",
+			name: "other:video",
+			aliases: [ "webcame" ],
 			description: "Requests a video link for the current voice channel."
 		}
 		super(client, options)
@@ -18,7 +12,6 @@ module.exports = class command extends Command {
 
 	async run(message) {
 		if(!message.guild) return
-		if(message.guild.id != makeshift.guild) return
 		//Error message in case of not being in a voice channel
 		if(!message.member.voiceChannel) {
 			try {

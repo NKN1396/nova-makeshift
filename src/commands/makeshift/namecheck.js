@@ -1,18 +1,11 @@
-const { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 const makeshift = require("./../../resources/makeshift.json")
 
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "namecheck",
-			aliases: [
-				"c",
-				"check",
-				"name",
-				"namecheck"
-			],
-			group: "makeshift",
-			memberName: "namecheck",
+			name: "makeshift:namecheck",
+			aliases: [ "c", "check", "name" ],
 			description: "Check your name according to (old) rule 6",
 			guildOnly : true
 		}

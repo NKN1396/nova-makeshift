@@ -1,17 +1,11 @@
-const { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 const { DateTime, Interval } = require("luxon")
 
 module.exports = class command extends Command {
 	constructor(client) {
 		super(client, {
-			name: "time",
-			aliases: [
-				"time",
-				"utc",
-				"reset"
-			],
-			group: "resources",
-			memberName: "time",
+			name: "resources:time",
+			aliases: [ "utc", "reset" ],
 			description: "Shows Warframe server time and time left until Warframe daily reset."
 		})
 	}

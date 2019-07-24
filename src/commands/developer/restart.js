@@ -1,14 +1,9 @@
-const { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "restart",
-			aliases: [
-				"restart"
-			],
-			memberName: "restart",
-			group: "developer",
+			name: "developer:restart",
 			description: "Restarts a part of Nova",
 			ownerOnly : true
 		}

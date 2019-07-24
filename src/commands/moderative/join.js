@@ -1,16 +1,10 @@
-var { Command } = require("discord.js-commando")
+var Command = require("./../../utils/novaCommand")
 
 module.exports = class command extends Command {
 	constructor(client) {
 		super(client, {
-			name: "join",
-			aliases: [
-				"join",
-				"joined"
-			],
-			group: "moderative",
-			memberName: "join",
-			description: "",
+			name: "moderative:join",
+			aliases: [ "joined" ],
 			guildOnly : true
 		})
 	}

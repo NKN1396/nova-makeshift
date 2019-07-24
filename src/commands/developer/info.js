@@ -1,17 +1,12 @@
-const { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 const info = require("./../../../package.json")
 const { stripIndents } = require("common-tags")
 
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "info",
-			aliases: [
-				"info",
-				"about"
-			],
-			memberName: "info",
-			group: "developer",
+			name: "developer:info",
+			aliases: [ "about" ],
 			description: "Displays information about this bot."
 		}
 		super(client, options)

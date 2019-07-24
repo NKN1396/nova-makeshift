@@ -1,14 +1,10 @@
-const { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 const makeshift = require("./../../resources/makeshift.json")
 
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "alliance",
-			aliases: [
-				"alliance"
-			],
-			memberName: "alliance",
+			name: "makeshift:alliance",
 			group: "makeshift",
 			description: "Link to the alliance Discord"
 		}

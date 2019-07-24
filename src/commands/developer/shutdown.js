@@ -1,14 +1,9 @@
-const { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "shutdown",
-			aliases: [
-				"shutdown"
-			],
-			memberName: "shutdown",
-			group: "developer",
+			name: "developer:shutdown",
 			description: "Shuts a part of Nova down",
 			ownerOnly : true
 		}
@@ -21,5 +16,6 @@ module.exports = class command extends Command {
 		await msg.react("💙")
 			.catch(console.error)
 		msg.client.destroy()
+		process.exit(0)
 	}
 }

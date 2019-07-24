@@ -18,8 +18,8 @@
 		"discord.js": "github:discordjs/discord.js",
 		"discord.js-commando": "github:discordjs/Commando",
 		"discord.js-handles": "github:NKN1396/discord.js-handles#master",
-		"lodash": "^4.17.11",
-		"luxon": "^1.16.0",
+		"lodash": "^4.17.15",
+		"luxon": "^1.17.2",
 		"pad-left": "^2.1.0"
 	}
 }
