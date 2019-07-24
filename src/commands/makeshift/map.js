@@ -1,5 +1,5 @@
 const Command = require("./../../utils/novaCommand")
-const makeshift = require("./../../resources/makeshift.json")
+const guildCheck = require("./util/guildCheck")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -14,18 +14,17 @@ module.exports = class extends Command {
 
 	async run(message) {
 		if(!message.guild) return
-		if(message.guild.id != makeshift.guild) return
-		let embed = {
-			embed: {
-				description: "Makeshift clan dojo map",
-				image: {
-					url: "https://cdn.discordapp.com/attachments/437703489347649539/437708566787260426/map.png"
-				}
-			}
-		}
 		try {
-			await message.react("✅")
-			message.channel.send(embed)
+			if(!guildCheck(message)) return
+			await message.channel.send({
+				embed: {
+					description: "Makeshift clan dojo map",
+					image: {
+						url: "https://cdn.discordapp.com/attachments/437703489347649539/437708566787260426/map.png"
+					}
+				}
+			})
+			message.react("✅")
 		} catch (error) {
 			console.error(error)
 		}

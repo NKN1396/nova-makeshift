@@ -1,5 +1,5 @@
 const Command = require("./../../utils/novaCommand")
-const makeshift = require("./../../resources/makeshift.json")
+const guildCheck = require("./util/guildCheck")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -15,12 +15,16 @@ module.exports = class extends Command {
 
 	async run(message) {
 		if(!message.guild) return
-		if(message.guild.id != makeshift.guild) return
+		if(!guildCheck(message)) return
 		//TODO: return wether or not name is valid (e.g. double brackets or illegal character)
 		let displayName = message.member.displayName.split("(").pop().split(")").shift().replace(/[^A-Za-z0-9.\-_]/g, "")
-		if(!displayName) return
 		try {
-			await message.channel.send(`Your name is **${displayName}**.`)
+			if(!displayName){
+				await message.channel.send(`Your name is **${displayName}**.`)
+			} else {
+				await message.channel.send("<@153595272465743872> `./src/commands/makeshift/namecheck.js` marker 1")
+				//TODO: Proper error message (idk if this will fire at all or if it's just a fallback)
+			}
 			message.react("✅")
 		} catch (error) {
 			console.error(error)
