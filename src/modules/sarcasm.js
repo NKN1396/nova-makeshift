@@ -7,7 +7,7 @@ module.exports = function(client){
 
 		if(
 			!message.content.toLowerCase().endsWith(" /s") &&
-			!message.content === "/s"
+			message.content !== "/s"
 		) return
 
 		message.channel.send("*(That was sarcasm)*")
