@@ -1,10 +1,11 @@
 const Command = require("./../../utils/novaCommand")
 
-module.exports = class command_debug extends Command {
+module.exports = class extends Command {
 
 	constructor(client) {
 		let options = {
-			name: "developer:debug",
+			group: "developer",
+			name: "debug",
 			description: "A command used for testing various things.",
 			ownerOnly : true
 		}

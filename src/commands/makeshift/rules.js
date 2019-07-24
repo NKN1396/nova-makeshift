@@ -50,7 +50,8 @@ const rules = {
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "makeshift:rules",
+			group: "makeshift",
+			name: "rules",
 			aliases: [ "rule" ],
 			description: "Lists all or just a specific rule of the Makeshift clan"
 		}

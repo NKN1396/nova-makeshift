@@ -2,10 +2,11 @@ const Command = require("./../../utils/novaCommand")
 const info = require("./../../../package.json")
 const { stripIndents } = require("common-tags")
 
-module.exports = class command extends Command {
+module.exports = class extends Command {
 	constructor(client) {
 		let options = {
-			name: "developer:info",
+			group: "developer",
+			name: "info",
 			aliases: [ "about" ],
 			description: "Displays information about this bot."
 		}

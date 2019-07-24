@@ -4,7 +4,8 @@ const makeshift = require("./../../resources/makeshift.json")
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "makeshift:map",
+			group: "makeshift",
+			name: "map",
 			aliases: [ "dojo", "dojomap" ],
 			description: "Map of the Makeshift dojo"
 		}

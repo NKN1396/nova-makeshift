@@ -1,53 +1,22 @@
-//Enable debug logs with the "debug" argument at start
-process.argv.forEach((value) => {
-	if(value.match(/^(\/|--?)debug\b$/i)) process.env.DEBUG = true
-})
-if(process.env.DEBUG) console.debug("debug logs enabled")
-
 //External dependencies
-var commando = require("discord.js-commando")
-var path = require("path")
-var discordErrorHandler = require("discord.js-handles")
+const commando = require("discord.js-commando")
+const discordErrorHandler = require("discord.js-handles")
 
 //Load info
 const token = require("./token.json")	//I'm an idiot - Thanks for the lesson
 const makeshift = require("./src/resources/makeshift.json")
 
 //Create new Discord client
-var makeshiftbot = new commando.Client({
+const makeshiftbot = new commando.Client({
 	commandPrefix : "!",
 	unknownCommandResponse : false,
 	owner : "153595272465743872"
 })
 
-//Configure & load command registry
-makeshiftbot.registry
-	.registerGroups([
-		["developer", "Developer"],
-		["makeshift", "Makeshift"],
-		["resources", "Resources"],
-		["music", "Music"],
-		["memes-warframe", "Memes (Warframe)"],
-		["memes-makeshift", "Memes (Makeshift)"],
-		["memes-generic", "Memes (general)"],
-		["other", "Other"],
-		["moderative", "Moderative"]
-	])
-	.registerCommandsIn(path.join(__dirname, "src/commands"))
-	.registerDefaultTypes()
-	.registerDefaultGroups()
-	.registerDefaultCommands(
-		{
-			"help" : true,
-			"prefix" : false,
-			"eval_" : true,
-			"ping" : false,
-			"commandState" : false
-		}
-	)
+//Load and register commands.
+require("./src/commands/index")(makeshiftbot)
 
-
-const handlerOptions = {
+let handlerOptions = {
 	logAllGuilds: false,
 	guilds: [
 		makeshift.guild

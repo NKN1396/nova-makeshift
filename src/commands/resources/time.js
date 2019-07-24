@@ -4,7 +4,8 @@ const { DateTime, Interval } = require("luxon")
 module.exports = class command extends Command {
 	constructor(client) {
 		super(client, {
-			name: "resources:time",
+			group: "resources",
+			name: "time",
 			aliases: [ "utc", "reset" ],
 			description: "Shows Warframe server time and time left until Warframe daily reset."
 		})

@@ -4,9 +4,10 @@ const makeshift = require("./../../resources/makeshift.json")
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "makeshift:namecheck",
+			group: "makeshift",
+			name: "namecheck",
 			aliases: [ "c", "check", "name" ],
-			description: "Check your name according to (old) rule 6",
+			description: "Check your name according to *(old)* rule 6",
 			guildOnly : true
 		}
 		super(client, options)

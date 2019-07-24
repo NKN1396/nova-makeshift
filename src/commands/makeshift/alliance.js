@@ -4,8 +4,8 @@ const makeshift = require("./../../resources/makeshift.json")
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "makeshift:alliance",
 			group: "makeshift",
+			name: "alliance",
 			description: "Link to the alliance Discord"
 		}
 		super(client, options)

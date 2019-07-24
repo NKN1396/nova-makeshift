@@ -3,7 +3,8 @@ const Command = require("../../utils/novaCommand")
 module.exports = class command extends Command {
 	constructor(client) {
 		let options = {
-			name: "other:video",
+			group: "other",
+			name: "video",
 			aliases: [ "webcame" ],
 			description: "Requests a video link for the current voice channel."
 		}

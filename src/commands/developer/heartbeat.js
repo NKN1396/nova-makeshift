@@ -1,9 +1,10 @@
 const Command = require("./../../utils/novaCommand")
 
-module.exports = class command extends Command {
+module.exports = class extends Command {
 	constructor(client) {
 		let options = {
-			name: "developer:heartbeat",
+			group: "developer",
+			name: "heartbeat",
 			aliases: [ "ping" ],
 			description: "Checks which parts of Nova are running"
 		}

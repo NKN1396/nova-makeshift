@@ -1,9 +1,10 @@
 const Command = require("./../../utils/novaCommand")
 
-module.exports = class command extends Command {
+module.exports = class extends Command {
 	constructor(client) {
 		let options = {
-			name: "developer:restart",
+			group: "developer",
+			name: "restart",
 			description: "Restarts a part of Nova",
 			ownerOnly : true
 		}
