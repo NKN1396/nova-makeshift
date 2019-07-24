@@ -5,7 +5,10 @@
 module.exports = function(client){
 	client.on("message", async message => {
 
-		if(!message.content.toLowerCase().endsWith("/s")) return
+		if(
+			!message.content.toLowerCase().endsWith(" /s") &&
+			!message.content === "/s"
+		) return
 
 		message.channel.send("*(That was sarcasm)*")
 			.catch(console.error)
