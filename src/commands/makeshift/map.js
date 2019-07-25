@@ -17,8 +17,8 @@ module.exports = class extends Command {
 		try {
 			if(!guildCheck(message)) return
 			await message.channel.send({
+				content: "Makeshift clan dojo map",
 				embed: {
-					description: "Makeshift clan dojo map",
 					image: {
 						url: "https://cdn.discordapp.com/attachments/437703489347649539/437708566787260426/map.png"
 					}
