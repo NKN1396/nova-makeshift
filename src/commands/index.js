@@ -17,16 +17,17 @@ module.exports = function(client) {
 			["other", "Other"],
 			["moderative", "Moderative"]
 		])
-		.registerCommandsIn(path.join(__dirname))
-		.registerDefaultTypes()
 		.registerDefaultGroups()
+		.registerDefaultTypes()
+		.registerCommandsIn(path.join(__dirname))
 		.registerDefaultCommands(
 			{
 				"help" : true,
 				"prefix" : false,
 				"eval_" : true,
 				"ping" : false,
-				"commandState" : false
+				"commandState" : false,
+				"unknownCommand": false
 			}
 		)
 }
