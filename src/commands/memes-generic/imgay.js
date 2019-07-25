@@ -1,40 +1,21 @@
-var { Command } = require("discord.js-commando")
-var selectRandomly = require("./../../utils/selectRandomly")
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "imgay",
-			aliases: [
-				"gay"
-			],
+			aliases: ["gay"],
 			group: "memes-generic",
-			memberName: "imgay",
 			description: "I'm gay!"
 		})
 	}
 	
-	async run(msg, args) {
-		var options = [
-			"https://youtu.be/uwJSFYRtjHI"
-		]
-		var choice = selectRandomly(options, args)
-		var out = (options.length > 1)?`${this.name} ${options.indexOf(choice) + 1}/${options.length}`:""
+	async run(message) {
 		try {
-			if(out) {
-				if(choice.embed){
-					await msg.channel.send(out, choice)
-				}
-				else {
-					await msg.channel.send(`${out}\n${choice}`)
-				}
-			}
-			else {
-				await msg.channel.send(choice)
-			}
-			msg.react("✅")
-		} catch (e) {
-			console.error(e)
+			await message.channel.send("https://youtu.be/uwJSFYRtjHI")
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
 		}
 	}
 }
