@@ -26,7 +26,7 @@ function constructOne (options, choice = undefined, name = "Choice") {
 	if (!option.content) {
 		option.content = header
 	} else if (options.length > 1) {
-		option.content = `${header}\n:${option.content}`
+		option.content = `*${header}:*\n${option.content}`
 	}
 	return option
 }
