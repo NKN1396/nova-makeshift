@@ -7,12 +7,12 @@ const makeshift = require("./../resources/makeshift.json")
  * @param {*} client The bot client.
  */
 module.exports = function(client){
-	client.on("guildMemberGreeted", async guildMember => {
+	client.on("guildMemberGreeted", guildMember => {
 
 		//Check if member joined Makeshift guild
-		if(guildMember.guild.id != makeshift.guild) return
+		if(guildMember.guild.id !== makeshift.guild) return
 
-		guildMember.addRole(sample(makeshift.roles.colors))
+		guildMember.roles.add(sample(makeshift.roles.colors))
 			.catch(console.error)
 
 	})
