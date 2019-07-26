@@ -55,10 +55,9 @@ makeshiftbot.on("resume", ()=> {
 
 function atNovaHelp(user){
 	user.setPresence({
-		game: {
+		activity: {
 			name: "@Nova help",
 			type: "PLAYING"
-		},
-		status: "online"
+		}
 	})
 }
