@@ -22,13 +22,11 @@ function random2 (options, choice = undefined, name = "Choice") {
 	var option = random(options, choice)
 	option = random(options, choice)
 	var index = options.indexOf(option)
-	if(options.length > 1){
-		let header = `${name} ${index + 1}/${options.length}`
-		if (!option.content) {
-			option.content = header
-		} else {
-			option.content = `${header}\n:${option.content}`
-		}
+	let header = `${name} ${index + 1}/${options.length}`
+	if (!option.content) {
+		option.content = header
+	} else if (options.length > 1) {
+		option.content = `${header}\n:${option.content}`
 	}
 	return option
 }
