@@ -6,7 +6,7 @@ var { sample } = require("lodash")
  * @param {Number} choice The index of the array to return from.
  * @return {Object} The object returned from the specified options.
  */
-function random (options, choice) {
+function selectOne (options, choice) {
 	let option = options[choice - 1]
 	return option?option:sample(options)
 }
@@ -18,9 +18,9 @@ function random (options, choice) {
  * @param {string} name The name.
  * @return {Object} The object returned from the specified options.
  */
-function random2 (options, choice = undefined, name = "Choice") {
-	var option = random(options, choice)
-	option = random(options, choice)
+function constructOne (options, choice = undefined, name = "Choice") {
+	var option = selectOne(options, choice)
+	option = selectOne(options, choice)
 	var index = options.indexOf(option)
 	let header = `${name} ${index + 1}/${options.length}`
 	if (!option.content) {
@@ -31,4 +31,4 @@ function random2 (options, choice = undefined, name = "Choice") {
 	return option
 }
 
-module.exports = random2
+module.exports = constructOne
