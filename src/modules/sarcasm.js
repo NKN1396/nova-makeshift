@@ -3,7 +3,7 @@
  * @param {*} client The Discord.js client to hook into.
  */
 module.exports = function(client){
-	client.on("message", async message => {
+	client.on("message", message => {
 
 		if(
 			!message.content.toLowerCase().endsWith(" /s") &&
