@@ -15,6 +15,6 @@ module.exports = class extends Command {
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439506673221107727/hema.png"}}}
 			//TODO: find caption of "it's raining mutagen in the derelict"
 		]
-		this.sendSelect(message, options, args)
+		this.sendOne(message, options, args)
 	}
 }

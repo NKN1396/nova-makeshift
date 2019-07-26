@@ -12,6 +12,6 @@ module.exports = class extends Command {
 		let options = [
 			{content: "https://youtu.be/sPXBqiMHzi4"}
 		]
-		this.sendSelect(message, options, args, "Amesha")
+		this.sendOne(message, options, args, "Amesha")
 	}
 }

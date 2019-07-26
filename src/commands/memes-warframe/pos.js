@@ -20,6 +20,6 @@ module.exports = class extends Command {
 			I can even do more incredibly interesting defence missions bounties for 5 Nistlepods and if I'm lucky, a host migration.
 			Finally, once the sun goes down and I'm making my way to the final bounty I can take sweet comfort in the bounty failed text in the middle of my screen.`
 		]
-		this.sendSelect(message, options, args)
+		this.sendOne(message, options, args)
 	}
 }

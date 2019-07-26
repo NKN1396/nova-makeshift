@@ -8,7 +8,7 @@ module.exports = class Command extends Commando.Command {
 		super(client, info)
 	}
 
-	async sendSelect (message, options, args, name) {
+	async sendOne (message, options, args, name) {
 		try {
 			await message.channel.send(select(options, args, name))
 			message.react("✅")

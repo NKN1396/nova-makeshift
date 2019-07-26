@@ -15,6 +15,6 @@ module.exports = class extends Command {
 			{embed: {description: "Artwork by [u/ButItsOppositeDay](https://www.reddit.com/user/ButItsOppositeDay)", image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439509183289884707/sadnova.gif"}}}
 			//TODO: credits into footer
 		]
-		this.sendSelect(message, options, args)
+		this.sendOne(message, options, args)
 	}
 }

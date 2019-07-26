@@ -13,6 +13,6 @@ module.exports = class extends Command {
 		let options = [
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439503102484152320/ash.jpg"}}}
 		]
-		this.sendSelect(message, options, args, "Ash")
+		this.sendOne(message, options, args, "Ash")
 	}
 }

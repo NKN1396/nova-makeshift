@@ -34,6 +34,6 @@ module.exports = class extends Command {
 			Making the claim that Eidolon hunts are meta-cliques is demeaning the Tennnohood and values they are founded on.
 			This clearly is a stab at a community in Warframe that does nothing but support the rest of the player base.`
 		]
-		this.sendSelect(message, options, args)
+		this.sendOne(message, options, args)
 	}
 }

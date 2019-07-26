@@ -14,6 +14,6 @@ module.exports = class f extends Command {
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439503010104868874/argon.png"}}},
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439743173657624576/argon2.png"}}}
 		]
-		this.sendSelect(message, options, args, "Argon")
+		this.sendOne(message, options, args, "Argon")
 	}
 }

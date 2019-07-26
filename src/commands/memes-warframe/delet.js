@@ -15,6 +15,6 @@ module.exports = class extends Command {
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439503723052662793/delet.jpg"}}}
 			//{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439510963331399680/delet.jpg"}}} //Kanna version
 		]
-		this.sendSelect(message, options, args, "Delet")
+		this.sendOne(message, options, args, "Delet")
 	}
 }

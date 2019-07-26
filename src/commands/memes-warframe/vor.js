@@ -32,6 +32,6 @@ module.exports = class extends Command {
 			The Tenno are lost, and they will resist.
 			But I, Vor, will cleanse this place of their impurity.`
 		]
-		this.sendSelect(message, options, args)
+		this.sendOne(message, options, args)
 	}
 }

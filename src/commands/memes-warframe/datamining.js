@@ -16,6 +16,6 @@ module.exports = class extends Command {
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439503627330256926/datamining2.png"}}},
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439752967030046722/datamining3.jpg"}}}
 		]
-		this.sendSelect(message, options, args, "Datamining")
+		this.sendOne(message, options, args, "Datamining")
 	}
 }
