@@ -10,7 +10,7 @@ module.exports = class extends Command {
 	}
 	
 	async run(message, args) {
-		var options = [
+		let options = [
 			{embed: {footer: "Artwork by [rinkhet](http://rinkhet.tumblr.com/)", image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439508630522298388/octavia.png"}}},
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439931915534073875/octavia2.jpg"}}}
 			//TODO: image of kid with trumpet following girl

@@ -12,7 +12,7 @@ module.exports = class extends Command {
 	}
 	
 	async run(message, args) {
-		var options = [
+		let options = [
 			oneLine`I love plains of Eidolon,
 			let's remove every mission in the game and put their rewards in the plains so we can play max range Nova every game.
 			Killing enemies isn't even fun,

@@ -13,7 +13,7 @@ module.exports = class extends Command {
 	}
 	
 	async run(message, args) {
-		var options = [
+		let options = [
 			oneLine`I'm a PoE Veteran.
 			If you're not familiar with the term, that stands for Plains of Eidolon.
 			I do endgame level missions as an MR 25 Tenno in order to stand out from my lesser peers.

@@ -12,7 +12,7 @@ module.exports = class extends Command {
 	}
 	
 	async run(message, args) {
-		var options = [
+		let options = [
 			oneLine`Look at them, they come to this place when they know they are not pure.
 			Tenno use the keys, but they are mere trespassers.
 			Only I, Vor, know the true power of the Void.

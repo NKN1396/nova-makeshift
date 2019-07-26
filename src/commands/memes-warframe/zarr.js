@@ -9,7 +9,7 @@ module.exports = class extends Command {
 	}
 	
 	async run(message, args) {
-		var options = [
+		let options = [
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439510352649256970/zarr.png"}}}
 		]
 		this.sendSelect(message, options, args)
