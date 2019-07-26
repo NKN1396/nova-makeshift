@@ -18,4 +18,3 @@ let text = {
 	__This law however does only apply for public broadcasts.__`
 }
 
-

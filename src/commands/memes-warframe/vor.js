@@ -1,5 +1,5 @@
-var { Command } = require("discord.js-commando")
-var selectRandomly = require("./../../utils/selectRandomly")
+const Command = require("./../../utils/novaCommand")
+var select = require("./../../utils/selectRandomly")
 var { oneLine } = require("common-tags")
 
 module.exports = class extends Command {

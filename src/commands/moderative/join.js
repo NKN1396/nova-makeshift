@@ -10,8 +10,8 @@ module.exports = class extends Command {
 		})
 	}
 
-	async run(msg) {
-		msg.react("❌")
-		return
+	async run(message) {
+		message.react("❌")
+			.catch(console.error)
 	}
 }

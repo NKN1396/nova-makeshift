@@ -1,21 +1,16 @@
-var { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "warn",
-			aliases: [
-				"warn"
-			],
 			group: "moderative",
-			memberName: "warn",
-			description: "",
 			guildOnly : true
 		})
 	}
 
-	async run(msg) {
-		msg.react("❌")
-		return
+	async run(message) {
+		message.react("❌")
+			.catch(console.error)
 	}
 }
