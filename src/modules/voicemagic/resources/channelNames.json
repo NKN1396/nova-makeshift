@@ -4,7 +4,7 @@
 	"The Nuthouse",
 	"Nerding Grounds",
 	"Do Emojis work here? 🤔",
-	"channelName[Math.random(6)];",
+	"channelNames[Math.random(6)]",
 	"Your ad here!",
 	"I'm out of ideas...",
 	"Fresh Memes!",
@@ -18,5 +18,6 @@
 	"Endo my Life",
 	"Stale Memes!",
 	"Aniki's Dungeon",
-	"Disappointments"
+	"Disappointments Inc.",
+	"Boomers anonymous"
 ]
