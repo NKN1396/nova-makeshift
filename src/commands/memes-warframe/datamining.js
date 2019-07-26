@@ -1,5 +1,4 @@
 const Command = require("./../../utils/novaCommand")
-var select = require("./../../utils/selectRandomly")
 
 module.exports = class extends Command {
 	constructor(client) {
