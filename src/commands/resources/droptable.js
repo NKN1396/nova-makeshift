@@ -1,5 +1,5 @@
 const Command = require("./../../utils/novaCommand")
-const {stripIndents} = require("lodash")
+const {stripIndents} = require("common-tags")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -16,7 +16,8 @@ module.exports = class extends Command {
 			await message.channel.send(
 				stripIndents`Official repository released by Digital Extremes:
 				<http://www.warframe.com/repos/hnfvc0o3jnfvc873njb03enrf56.html>
-				~~Probably rigged~~ automatically generated and contains all drop chances.`
+				*~~Probably rigged~~ automatically generated and contains all drop chances.
+				There are currently no publicly-known, datamined repositories available.*`
 			)
 			message.react("✅")
 		} catch (error) {
