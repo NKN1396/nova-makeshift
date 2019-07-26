@@ -10,7 +10,6 @@ module.exports = function(client) {
 			["developer", "Developer"],
 			["makeshift", "Makeshift"],
 			["resources", "Resources"],
-			["music", "Music"],
 			["memes-warframe", "Memes (Warframe)"],
 			["memes-makeshift", "Memes (Makeshift)"],
 			["memes-generic", "Memes (general)"],
