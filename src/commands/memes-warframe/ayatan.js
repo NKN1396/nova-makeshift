@@ -4,6 +4,7 @@ module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "ayatan",
+			alias: ["sculpture", "ayatansculputre"],
 			group: "memes-warframe"
 		})
 	}
