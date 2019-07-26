@@ -10,12 +10,10 @@ module.exports = class extends Command {
 		})
 	}
 	
-	async run(message) {
-		try {
-			message.channel.send({embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439497341938958357/venn2.png"}}})
-			message.react("✅")
-		} catch (error) {
-			console.error(error)
-		}
+	async run(message, args) {
+		let options = [
+			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439497341938958357/venn2.png"}}}
+		]
+		this.sendOne(message, options, args, "Venn2")
 	}
 }
