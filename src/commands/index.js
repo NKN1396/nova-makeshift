@@ -13,8 +13,7 @@ module.exports = function(client) {
 			["memes-warframe", "Memes (Warframe)"],
 			["memes-makeshift", "Memes (Makeshift)"],
 			["memes-generic", "Memes (general)"],
-			["other", "Other"],
-			["moderative", "Moderative"]
+			["other", "Other"]
 		])
 		.registerDefaultGroups()
 		.registerDefaultTypes()
