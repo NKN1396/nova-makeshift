@@ -1,23 +1,18 @@
 const Command = require("./../../utils/novaCommand")
-var select = require("./../../utils/selectRandomly")
 var { oneLine } = require("common-tags")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "posvet",
-			aliases: [
-				"posvet",
-				"poevet",
-				"posv"
-			],
+			aliases: ["poevet", "posv"],
 			group: "memes-warframe",
 			memberName: "posvet",
 			description: "I'm a PoE Veteran."
 		})
 	}
 	
-	async run(msg, args) {
+	async run(message, args) {
 		var options = [
 			oneLine`I'm a PoE Veteran.
 			If you're not familiar with the term, that stands for Plains of Eidolon.
@@ -39,23 +34,6 @@ module.exports = class extends Command {
 			Making the claim that Eidolon hunts are meta-cliques is demeaning the Tennnohood and values they are founded on.
 			This clearly is a stab at a community in Warframe that does nothing but support the rest of the player base.`
 		]
-		var choice = selectRandomly(options, args)
-		var out = (options.length > 1)?`${this.name} ${options.indexOf(choice) + 1}/${options.length}`:""
-		try {
-			if(out) {
-				if(choice.embed){
-					await msg.channel.send(out, choice)
-				}
-				else {
-					await msg.channel.send(`${out}\n${choice}`)
-				}
-			}
-			else {
-				await msg.channel.send(choice)
-			}
-			msg.react("✅")
-		} catch (e) {
-			console.error(e)
-		}
+		this.sendSelect(message, options, args)
 	}
 }

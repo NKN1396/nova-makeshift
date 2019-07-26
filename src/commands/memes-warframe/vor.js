@@ -1,23 +1,17 @@
 const Command = require("./../../utils/novaCommand")
-var select = require("./../../utils/selectRandomly")
 var { oneLine } = require("common-tags")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "vor",
-			aliases: [
-				"vor",
-				"vorpost",
-				"monologue"
-			],
+			aliases: ["vorpost", "monologue"],
 			group: "memes-warframe",
-			memberName: "vor",
 			description: "Look at them, ..."
 		})
 	}
 	
-	async run(msg, args) {
+	async run(message, args) {
 		var options = [
 			oneLine`Look at them, they come to this place when they know they are not pure.
 			Tenno use the keys, but they are mere trespassers.
@@ -38,23 +32,6 @@ module.exports = class extends Command {
 			The Tenno are lost, and they will resist.
 			But I, Vor, will cleanse this place of their impurity.`
 		]
-		var choice = selectRandomly(options, args)
-		var out = (options.length > 1)?`${this.name} ${options.indexOf(choice) + 1}/${options.length}`:""
-		try {
-			if(out) {
-				if(choice.embed){
-					await msg.channel.send(out, choice)
-				}
-				else {
-					await msg.channel.send(`${out}\n${choice}`)
-				}
-			}
-			else {
-				await msg.channel.send(choice)
-			}
-			msg.react("✅")
-		} catch (e) {
-			console.error(e)
-		}
+		this.sendSelect(message, options, args)
 	}
 }

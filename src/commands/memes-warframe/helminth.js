@@ -1,41 +1,19 @@
 const Command = require("./../../utils/novaCommand")
-var select = require("./../../utils/selectRandomly")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "helminth",
-			aliases: [
-				"helminth",
-				"helminthcharger"
-			],
+			aliases: ["helminthcharger"],
 			group: "memes-warframe",
-			memberName: "helminth",
-			description: "Helminth Charger"
+			description: "Helminth charger"
 		})
 	}
 	
-	async run(msg, args) {
-		var options = [
+	async run(message, args) {
+		let options = [
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439751976990015492/helminth.png"}}}
 		]
-		var choice = selectRandomly(options, args)
-		var out = (options.length > 1)?`${this.name} ${options.indexOf(choice) + 1}/${options.length}`:""
-		try {
-			if(out) {
-				if(choice.embed){
-					await msg.channel.send(out, choice)
-				}
-				else {
-					await msg.channel.send(`${out}\n${choice}`)
-				}
-			}
-			else {
-				await msg.channel.send(choice)
-			}
-			msg.react("✅")
-		} catch (e) {
-			console.error(e)
-		}
+		this.sendSelect(message, options, args)
 	}
 }
