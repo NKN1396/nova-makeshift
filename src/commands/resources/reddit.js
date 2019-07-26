@@ -1,37 +1,40 @@
-var { Command } = require("discord.js-commando");
-var { stripIndents } = require("common-tags");
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "reddit",
-			aliases: [
-				"subreddit",
-				"reddit",
-				"r/warframe",
-				"r/wf",
-				"subreddits",
-				"reddits"
-			],
+			aliases: ["subreddit", "r/warframe", "r/wf", "subreddits", "reddits"],
 			group: "resources",
-			memberName: "reddit",
 			description: "Warframe subreddits"
-		});
+		})
 	}
 
-	async run(msg) {
-		var out =
-		stripIndents`**Warframe subreddits: **
-		
-		__r/Warframe__, the big one:
-		<https://www.reddit.com/r/Warframe/>
-		
-		__r/MemeFrame__, has some good stuff:
-		<https://www.reddit.com/r/MemeFrame/>
-		
-		__r/WarframeRunway__, some dank fashionframe:
-		<https://www.reddit.com/r/WarframeRunway/>`;
-		msg.react("✅");
-		return msg.channel.send(out);
+	async run(message) {
+		try {
+			await message.channel.send({
+				content: "Warframe subreddits:",
+				embed: {
+					fields: [
+						{
+							name: "r/Warframe",
+							value: "\\> [Click here](https://www.reddit.com/r/Warframe/) < - The big subreddit for almost everything."
+						},
+						{
+							name: "r/MemeFrame",
+							value: "\\> [Click here](https://www.reddit.com/r/MemeFrame/) < - A subreddit dedicated to Warframe memes."
+						},
+						{
+							name: "r/WarframeRunway",
+							value: "\\> [Click here](https://www.reddit.com/r/WarframeRunway/) < - Fashionframe."
+						},
+					]
+				}
+			})
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
+		}		
+
 	}
-};
+}

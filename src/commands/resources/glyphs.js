@@ -1,20 +1,21 @@
-var { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "glyphs",
-			aliases: [
-				"glyph"
-			],
+			aliases: ["glyph"],
 			group: "resources",
-			memberName: "glyphs",
 			description: "List of all Warframe glyphs"
 		})
 	}
 
-	async run(msg) {
-		msg.react("✅")
-		return msg.channel.send("<https://glyphs.wf/>")
+	async run(message) {
+		try {
+			await message.channel.send("<https://glyphs.wf/>")
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
+		}
 	}
 }

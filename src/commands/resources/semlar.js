@@ -1,21 +1,21 @@
-var { Command } = require("discord.js-commando");
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "semlar",
-			aliases: [
-				"semlar",
-				"rivencalc"
-			],
+			aliases: ["rivencalc"],
 			group: "resources",
-			memberName: "semlar",
-			description: "semlar, a website with Riven-, Amp- and Zaw-calculators"
-		});
+			description: "Semlar, a website with Riven-, Amp- and Zaw-calculators"
+		})
 	}
 
 	async run(msg) {
-		msg.react("✅");
-		return msg.channel.send("<https://semlar.com/>");
+		try {
+			await msg.channel.send("<https://semlar.com/>")
+			msg.react("✅")
+		} catch (error) {
+			console.error(error)
+		}
 	}
-};
+}

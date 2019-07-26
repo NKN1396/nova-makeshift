@@ -1,22 +1,24 @@
-var { Command } = require("discord.js-commando");
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "deathsnacks",
 			aliases: [
-				"deathsnacks",
 				"tracker",
 				"tracking"
 			],
 			group: "resources",
-			memberName: "deathsnacks",
 			description: "An event tracker for Warframe"
-		});
+		})
 	}
 
-	async run(msg) {
-		msg.react("✅");
-		return msg.channel.send("<http://deathsnacks.com/wf/index.html>");
+	async run(message) {
+		try {
+			await message.channel.send("<http://deathsnacks.com/wf/index.html>")
+			message.react("✅")	
+		} catch (error) {
+			console.error(error)
+		}
 	}
-};
+}

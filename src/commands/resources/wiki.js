@@ -1,27 +1,21 @@
-var { Command } = require("discord.js-commando");
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "wiki",
-			aliases: [
-				"wiki",
-				"warframewiki",
-				"wfwiki",
-				"wikia",
-				"wikilink"
-			],
+			aliases: ["warframewiki", "wfwiki", "wikia", "wikilink", "fandom"],
 			group: "resources",
-			memberName: "wiki",
 			description: "Link to the Warframe wiki"
-		});
+		})
 	}
 
-	async run(msg, args) {
-		if(!args){
-			msg.react("✅");
-			return msg.channel.send("*<http://warframe.wikia.com/wiki/WARFRAME_Wiki>*");
+	async run(message) {
+		try {
+			await message.channel.send("*<http://warframe.wikia.com/wiki/WARFRAME_Wiki>*")
+			message.react("✅")	
+		} catch (error) {
+			console.error(error)
 		}
-		return;
 	}
-};
+}

@@ -1,21 +1,21 @@
-var { Command } = require("discord.js-commando");
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "blackmarket",
-			aliases: [
-				"bm",
-				"blackmarket"
-			],
+			aliases: ["bm", "wartrade"],
 			group: "resources",
-			memberName: "blackmarket",
 			description: "Warframe Black Market Discord"
-		});
+		})
 	}
 
-	async run(msg) {
-		msg.react("✅");
-		return msg.channel.send("https://discord.gg/EwD6J37");
+	async run(message) {
+		try {
+			await message.react("✅")
+			message.channel.send("https://discord.gg/EwD6J37")
+		} catch (error) {
+			console.error(error)
+		}
 	}
-};
+}

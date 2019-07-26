@@ -1,31 +1,26 @@
-var { Command } = require("discord.js-commando");
+const Command = require("./../../utils/novaCommand")
+const {stripIndents} = require("lodash")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "droptable",
-			aliases: [
-				"drops",
-				"droptable",
-				"droptables",
-				"repo",
-				"repository"
-			],
+			aliases: ["drops", "droptables", "repo", "repository" ],
 			group: "resources",
-			memberName: "droptable",
-			description: "Warframe droptables"
-		});
+			description: "Warframe drop table"
+		})
 	}
 
-	async run(msg) {
-		var out = 
-		"**Drop tables:**\n" +
-		"Official Warframe droprates:\n" +
-		"<http://tinyurl.com/wfdropsource>\n" +
-		//"<http://www.warframe.com/repos/hnfvc0o3jnfvc873njb03enrf56.html>\n" +
-		"Relic drop tables:\n" +
-		"*<https://www.war.farm/>*";
-		msg.react("✅");
-		return msg.channel.send(out);
+	async run(message) {
+		try {
+			await message.channel.send(
+				stripIndents`Official repository released by Digital Extremes:
+				<http://www.warframe.com/repos/hnfvc0o3jnfvc873njb03enrf56.html>
+				~~Probably rigged~~ automatically generated and contains all drop chances.`
+			)
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
+		}
 	}
-};
+}

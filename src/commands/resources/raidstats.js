@@ -1,34 +1,21 @@
-var { Command } = require("discord.js-commando");
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "raidstats",
-			aliases: [
-				"christx",
-				"trials.wf",
-				"raidstats",
-				"wf.christx.tw",
-				"raidtrack",
-				"raidtracker",
-				"raidtrackers"
-			],
+			aliases: ["christx", "trials.wf", "wf.christx.tw", "raidtrack", "raidtracker", "raidtrackers", "trials", "trials.wf"],
 			group: "resources",
-			memberName: "raidstats",
-			description: "Advanced raiding history trackers"
-		});
+			description: "Raiding history trackers"
+		})
 	}
 
-	async run(msg) {
-		var out =
-		"**Websites for tracking raid statistics:**\n" +
-		"\n" +
-		"__christx__, shows glitched raids:\n" +
-		"*<http://wf.christx.tw/>*\n" +
-		"\n" +
-		"trials.wf, not as buggy and well-maintained:\n" +
-		"*<https://trials.wf/>*";
-		msg.react("✅");
-		return msg.channel.send(out);
+	async run(message) {
+		try {
+			await message.channel.send("https://trials.wf/")
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
+		}
 	}
-};
+}

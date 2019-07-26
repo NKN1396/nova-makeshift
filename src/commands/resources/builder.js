@@ -1,41 +1,48 @@
-var { Command } = require("discord.js-commando");
+const Command = require("./../../utils/novaCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
 		super(client, {
 			name: "builder",
-			aliases: [
-				"builder",
-				"builds",
-				"warframe-builder",
-				"wf-builder",
-				"distantobserver",
-				"distant-observer",
-				"observer",
-				"calculator"
-			],
+			aliases: ["builds", "warframe-builder", "wf-builder", "distantobserver", "distant-observer", "observer", "calculator", "tennoware"],
 			group: "resources",
-			memberName: "builder",
 			description: "Warframe builds"
 		})
 	}
 
-	async run(msg) {
-		
-		var embed = {
-			embed: {
-				test: "https://tennoware.com/"
-			}
+	async run(message) {
+		try {
+			await message.channel.send({
+				content: "Warframe build resources",
+				embed: {
+					description: "This is a collection of popular resources used for various Warframe builds.",
+					fields: [
+						{
+							name: "Tennoware",
+							value: "\\> [Click here](https://tennoware.com/) < - A new and popular build website."
+						},
+						{
+							name: "Warframe builder",
+							value: "\\> [Click here](http://warframe-builder.com/) < - A website that used to be very popular in the past."
+						},
+						{
+							name: "distant Observer",
+							value: "\\> [Click here](https://www.youtube.com/channel/UC13043Ga8_N3kItV22oHazQ) < - A YouTube-channel centered around high-Forma builds and strong synergies."
+						},
+						{
+							name: "Warframe Builds by Niche",
+							value: "\\> [Click here](https://docs.google.com/document/d/1MQYrwZ3s3KMbU5aB6h_bxPjTouE9qDTAxMb86_P7JHw/) < - A collection of builds created by one player (\\-NICHE\\-) who is very dedicated to writing multiple, well-explained builds for all moddable gear. This is a very long document that is an ongoing work-in-progress."
+						},
+						{
+							name: "WFCD builds channel",
+							value: "\\> [Click here](https://discordapp.com/channels/77176186148499456/150312340590428160) < - The builds channel on the Warframe community Discord. Very active and has many people willing to help with your build.\n*(To join the WFCD \\> [click here](https://discord.gg/warframe) <)*"
+						}
+					]
+				}
+			})
+			message.react("✅")
+		} catch (error) {
+			console.error(error)
 		}
-		const out = 
-		"**Builds:**\n" +
-		"Warframe builder:\n" +
-		"*<http://warframe-builder.com/>*\n" +
-		"Tennoware, an Alternative" +
-		"https://tennoware.com/" +
-		"distant Observer YouTube channel:\n" +
-		"*<https://www.youtube.com/channel/UC13043Ga8_N3kItV22oHazQ>*"
-		msg.react("✅")
-		return msg.channel.send(out)
 	}
 }
