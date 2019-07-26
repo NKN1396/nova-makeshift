@@ -1,4 +1,4 @@
-var { Command } = require("discord.js-commando")
+const Command = require("./../../utils/novaCommand")
 var colors = require("./../../resources/makeshift.json").roles.colors
 var { stripIndents } = require("common-tags")
 
@@ -9,14 +9,8 @@ module.exports = class extends Command {
 		super(client, {
 			name: "colors",
 			aliases:
-			[
-				"colors",
-				"color",
-				"colours",
-				"colour"
-			],
+			["color", "colours", "colour"],
 			group: "other",
-			memberName: "colors",
 			description: "Changes your color.",
 			details: "Change your color or list all available colors.",
 			examples:
@@ -27,14 +21,14 @@ module.exports = class extends Command {
 		})
 	}
 
-	async run(msg, args) {
-		msg.react("✅")
-		var ID_colorToAssign = returnColor(args)
+	async run(message, args) {
+		message.react("✅")
+		var ID_colorToAssign = pickColor(args)
 		if(!ID_colorToAssign){
 			var allColorNames = ""
 			for(var color in colors) allColorNames += color + " "
 			allColorNames.trim()
-			msg.channel.send(
+			message.channel.send(
 				stripIndents`The following colors are available to be assigned:
 				${allColorNames}
 				
@@ -42,24 +36,24 @@ module.exports = class extends Command {
 			)
 			return
 		}
-		if(msg.guild.id != guild_makeshift_id) return
-		msg.member.changeColorSoon = false //For compatibility with Prism2
-		msg.member.addRole(ID_colorToAssign)
+		if(message.guild.id != guild_makeshift_id) return
+		message.member.changeColorSoon = false //For compatibility with Prism2
+		message.member.addRole(ID_colorToAssign)
 			.then(function(){
 				var collection_ID_colorToRemove = []
 				for(var color in colors){
 					var ID_color = colors[color]
 					if(ID_color == ID_colorToAssign) continue
-					if(msg.member.roles.get(ID_color)){
+					if(message.member.roles.get(ID_color)){
 						collection_ID_colorToRemove.push(ID_color)
 					}
 				}
-				msg.member.removeRoles(collection_ID_colorToRemove)
+				message.member.removeRoles(collection_ID_colorToRemove)
 			})
 	}
 }
 
-function returnColor(args){
+function pickColor(args){
 	switch(args.toLowerCase()){
 		case "turquoise":
 			return colors.turquoise

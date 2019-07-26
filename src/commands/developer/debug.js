@@ -7,7 +7,8 @@ module.exports = class extends Command {
 			group: "developer",
 			name: "debug",
 			description: "A command used for testing various things.",
-			ownerOnly : true
+			ownerOnly : true,
+			userPermissions: ["KICK_MEMBERS", "VIEW_CHANNEL", "ADMINISTRATOR"]
 		}
 		super(client, options)
 	}
