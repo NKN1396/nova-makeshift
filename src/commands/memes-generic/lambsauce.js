@@ -1,5 +1,4 @@
 const Command = require("./../../utils/novaCommand")
-var select = require("./../../utils/selectRandomly")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -16,11 +15,6 @@ module.exports = class extends Command {
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439494334149296128/lambsauce.jpg"}}},
 			{content: "https://youtu.be/NiESb9M1HmY"}
 		]
-		try {
-			await message.channel.send(select(options, args, "Lamb sauce"))
-			message.react("✅")
-		} catch (error) {
-			console.error(error)
-		}
+		this.sendOne(message, options, args, "Lamb sauce")
 	}
 }

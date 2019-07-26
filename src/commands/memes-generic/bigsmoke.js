@@ -1,5 +1,4 @@
 const Command = require("./../../utils/novaCommand")
-var select = require("./../../utils/selectRandomly")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -20,11 +19,6 @@ module.exports = class extends Command {
 			{content: "https://www.youtube.com/watch?v=nRTp2WGXfdk"},
 			{content: "I'll have two number 9s, a number 9 large, a number 6 with extra dip, a number 7, two number 45s, one with cheese, and a large soda."}
 		]
-		try {
-			await message.channel.send(select(options, args, "Big smoke"))
-			message.react("✅")
-		} catch (error) {
-			console.error(error)
-		}
+		this.sendOne(message, options, args, "Extradip")
 	}
 }

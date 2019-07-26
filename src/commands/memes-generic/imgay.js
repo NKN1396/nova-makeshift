@@ -10,12 +10,10 @@ module.exports = class extends Command {
 		})
 	}
 	
-	async run(message) {
-		try {
-			await message.channel.send("https://youtu.be/uwJSFYRtjHI")
-			message.react("✅")
-		} catch (error) {
-			console.error(error)
-		}
+	async run(message, args) {
+		let options = [
+			{content: "https://youtu.be/uwJSFYRtjHI"}
+		]
+		this.sendOne(message, options, args, "gay")
 	}
 }
