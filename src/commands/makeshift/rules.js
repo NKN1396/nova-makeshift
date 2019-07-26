@@ -64,6 +64,7 @@ module.exports = class extends Command {
 		try {
 			let response = getResponse(args)
 			await message.channel.send(response)
+			//TODO: Fix
 			message.react("✅")
 		} catch (error) {
 			console.error(error)
