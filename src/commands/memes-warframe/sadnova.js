@@ -12,8 +12,7 @@ module.exports = class extends Command {
 	
 	async run(message, args) {
 		let options = [
-			{embed: {description: "Artwork by [u/ButItsOppositeDay](https://www.reddit.com/user/ButItsOppositeDay)", image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439509183289884707/sadnova.gif"}}}
-			//TODO: credits into footer
+			{embed: {title: "Artwork by u/ButItsOppositeDay", url: "https://www.reddit.com/user/ButItsOppositeDay", image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439509183289884707/sadnova.gif"}}}
 		]
 		this.sendOne(message, options, args)
 	}
