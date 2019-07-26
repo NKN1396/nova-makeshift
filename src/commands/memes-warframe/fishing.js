@@ -12,7 +12,7 @@ module.exports = class extends Command {
 	async run(message, args) {
 		let options = [
 			{embed: {image: {url: "https://cdn.discordapp.com/attachments/437703489347649539/439746051810000896/norg.jpg"}}}
-			//Image of REEEE Tenno do this shit
+			//TODO: Image of REEEE Tenno do this shit
 		]
 		this.sendOne(message, options, args, "Fishing")
 	}
