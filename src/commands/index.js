@@ -28,4 +28,5 @@ module.exports = function(client) {
 				"unknownCommand": false
 			}
 		)
+	console.log("Nova commands loaded.")
 }
