@@ -1,6 +1,7 @@
 const makeshift = require("./../../../resources/makeshift.json")
 
 module.exports = function(message) {
+	//TODO: if(!message.guild) return
 	if(message.guild.id === makeshift.guild) {return true} //Makeshift guild check passed, continue
 	//Makeshift guild check failed
 	(async () => {
