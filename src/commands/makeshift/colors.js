@@ -20,7 +20,7 @@ module.exports = class extends Command {
 		if(!message.guild) return
 		if(!guildCheck(message)) return
 
-		let color = pickColor(args)
+		let color = colors[args]
 		if(!color){
 			message.channel.send(
 				stripIndents`The following colors are available to be assigned:
@@ -58,32 +58,5 @@ module.exports = class extends Command {
 		}
 		message.react("✅")
 			.catch(console.error)
-	}
-}
-
-function pickColor(args){
-	switch(args.toLowerCase()){
-		case "turquoise":
-			return colors.turquoise
-		case "green":
-			return colors.green
-		case "blue":
-			return colors.blue
-		case "purple":
-			return colors.purple
-		case "pink":
-			return colors.pink
-		case "yellow":
-			return colors.yellow
-		case "orange":
-			return colors.orange
-		case "red":
-			return colors.red
-		case "grey":
-			return colors.grey
-		case "lime":
-		case "badass":
-		case "bada55":
-			return colors.lime
 	}
 }
