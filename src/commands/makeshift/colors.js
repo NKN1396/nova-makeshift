@@ -1,7 +1,6 @@
-const Command = require("../../utils/novaCommand")
+const Command = require("./util/makeshiftCommand")
 var colors = require("./../../resources/makeshift.json").roles.colors
 var { stripIndents } = require("common-tags")
-const guildCheck = require("./util/guildCheck")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -17,9 +16,7 @@ module.exports = class extends Command {
 	}
 
 	async run(message, args) {
-		if(!message.guild) return
-		if(!guildCheck(message)) return
-
+		if(!this.guildCheck(message)) return
 		let color = colors[args]
 		if(!color){
 			message.channel.send(

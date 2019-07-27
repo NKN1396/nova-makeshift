@@ -1,6 +1,5 @@
-const Command = require("./../../utils/novaCommand")
+const Command = require("./util/makeshiftCommand")
 const { oneLine, stripIndents } = require("common-tags")
-const guildCheck = require("./util/guildCheck")
 
 const rules = {
 	"all": "",
@@ -59,8 +58,7 @@ module.exports = class extends Command {
 	}
 
 	async run(message, args) {
-		if(!message.guild) return
-		if(!guildCheck(message)) return
+		if(!this.guildCheck(message)) return
 		try {
 			let response = getResponse(args)
 			await message.channel.send(response)

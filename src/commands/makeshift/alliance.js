@@ -1,5 +1,4 @@
-const Command = require("./../../utils/novaCommand")
-const guildCheck = require("./util/guildCheck")
+const Command = require("./util/makeshiftCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -12,8 +11,7 @@ module.exports = class extends Command {
 	}
 
 	async run(message) {
-		if(!message.guild) return
-		if(!guildCheck(message)) return
+		if(!this.guildCheck(message)) return
 		try {
 			await message.channel.send("We're not in an alliance right now.")
 			message.react("✅")
