@@ -22,8 +22,8 @@ module.exports = class extends Command {
 					fields: [
 						{
 							name: "Warframe market",
-							value: stripIndents`\\> [Click here](http://warframe.market/) < - The biggest and most popular trading site. Offers all tradable items and Rivens (currently beta).
-							\\> [Click here](https://discordapp.com/invite/M7BHnPS) < Their Discord server. Can also be used for trading but is not as intuitive.`
+							value: stripIndents`\\> [Click here](http://warframe.market/) < - The biggest and most popular trading site. Offers all tradable items and Rivens (currently beta).`
+							//\\> [Click here](https://discordapp.com/invite/M7BHnPS) < Their Discord server. Can also be used for trading but is not as intuitive.
 						},
 						{
 							name: "Riven market",
@@ -52,7 +52,7 @@ module.exports = class extends Command {
 						{
 							name: "Official weekly Riven prices",
 							value: stripIndents`\\> [Click here](http://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivensPC.json) < - Official list of Riven trades that actually happened. Data is in JSON format, so it might be hard to read.
-							\\> [Click here](https://forums.warframe.com/topic/1077490-riven-trading-toolbuilders-phase-1/) < - Explanation of all terms used in the list.`
+							\\> [Click here](https://forums.warframe.com/topic/1077490-riven-trading-toolbuilders-phase-1/) < - Forum post with explanation of all terms used in the list.`
 						}
 					]
 				}
