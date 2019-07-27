@@ -1,4 +1,4 @@
-const Command = require("./util/makeshiftCommand")
+const Command = require("./../../utils/makeshiftCommand")
 var colors = require("./../../resources/makeshift.json").roles.colors
 var { stripIndents } = require("common-tags")
 

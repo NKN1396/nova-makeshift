@@ -1,4 +1,4 @@
-const Command = require("./util/makeshiftCommand")
+const Command = require("./../../utils/makeshiftCommand")
 const { oneLine, stripIndents } = require("common-tags")
 
 const rules = {

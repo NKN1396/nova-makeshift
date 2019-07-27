@@ -1,4 +1,4 @@
-const Command = require("./util/makeshiftCommand")
+const Command = require("./../../utils/makeshiftCommand")
 
 module.exports = class extends Command {
 	constructor(client) {
