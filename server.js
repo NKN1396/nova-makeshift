@@ -33,13 +33,8 @@ let handlerOptions = {
 discordErrorHandler(makeshiftbot, handlerOptions)
 
 //Load custom modules
-require("./src/modules/greet")(makeshiftbot)
-require("./src/modules/modbuilds")(makeshiftbot)
-require("./src/modules/sassynova")(makeshiftbot)
-require("./src/modules/sarcasm")(makeshiftbot)
-require("./src/modules/soontm")(makeshiftbot)
-require("./src/modules/voicemagic")(makeshiftbot)
-require("./src/modules/prism2")(makeshiftbot)
+require("./src/modules/index")(makeshiftbot)
+
 
 //*
 //Start bot
