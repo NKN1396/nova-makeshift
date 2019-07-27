@@ -1,12 +1,26 @@
-const Command = require("./../../../utils/novaCommand")
-const makeshift = require("./../../../resources/makeshift.json")
+const Command = require("./novaCommand")
+const makeshift = require("./../resources/makeshift.json")
 
+/**
+ * A class for commands that are only supposed to work on the Makeshift Discord.
+ * @extends Command
+ */
 module.exports = class extends Command {
+	/**
+	 * 
+	 * @param {*} client The CommandoClient.
+	 * @param {*} options The CommandInfo.
+	 */
 	constructor(client, options) {
 		super(client, options)
 		this.guildOnly = true
 	}
 
+	/**
+	 * Checks if the message has been written on the Makeshift Discord.
+	 * @param {*} message The original message.
+	 * @returns {Boolean} Wether or not the message was sent on the Makeshift Discord.
+	 */
 	guildCheck (message) {
 		if(!message.guild) {
 			decline(message)
@@ -20,6 +34,7 @@ module.exports = class extends Command {
 		return true
 	}
 
+	
 	onBlock(message, reason, data) {
 		if(reason === "guildOnly") {
 			decline(message)
