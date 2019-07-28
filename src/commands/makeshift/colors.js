@@ -34,6 +34,7 @@ module.exports = class extends Command {
 					await message.member.roles.add(color)
 				}
 				//Remove old colors
+				//TODO: Lodash's _.get() or similar might be better here
 				var rolesToRemove = message.member.roles
 					.filter(role =>
 						Object.values(colors).some(color =>
