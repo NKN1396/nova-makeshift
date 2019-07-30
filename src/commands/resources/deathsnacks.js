@@ -1,4 +1,5 @@
 const Command = require("./../../utils/novaCommand")
+const {stripIndents} = require("common-tags")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -15,7 +16,8 @@ module.exports = class extends Command {
 
 	async run(message) {
 		try {
-			await message.channel.send("<http://deathsnacks.com/wf/index.html>")
+			await message.channel.send(stripIndents`Deathsnacks' Warframe event tracker:
+			<http://deathsnacks.com/wf/index.html>`)
 			message.react("✅")	
 		} catch (error) {
 			console.error(error)

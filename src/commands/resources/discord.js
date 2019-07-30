@@ -1,4 +1,5 @@
 const Command = require("../../utils/novaCommand")
+const {stripIndents} = require("common-tags")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -12,7 +13,8 @@ module.exports = class extends Command {
 
 	async run(message) {
 		try {
-			await message.channel.send("https://discord.gg/playwarframe")
+			await message.channel.send(stripIndents`Official Warframe Discord:
+			https://discord.gg/playwarframe`)
 			message.react("✅")
 		} catch (error) {
 			console.error(error)

@@ -1,4 +1,5 @@
 const Command = require("./../../utils/novaCommand")
+const {stripIndents} = require("common-tags")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -13,7 +14,8 @@ module.exports = class extends Command {
 	async run(message) {
 		try {
 			await message.react("✅")
-			message.channel.send("https://discord.gg/EwD6J37")
+			message.channel.send(stripIndents`WarTrade (formerly Black Market) Discord:
+			https://discord.gg/EwD6J37`)
 		} catch (error) {
 			console.error(error)
 		}

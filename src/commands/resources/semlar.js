@@ -1,4 +1,5 @@
 const Command = require("./../../utils/novaCommand")
+const {stripIndents} = require("common-tags")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -12,7 +13,9 @@ module.exports = class extends Command {
 
 	async run(msg) {
 		try {
-			await msg.channel.send("<https://semlar.com/>")
+			await msg.channel.send(stripIndents`Semlar's website:
+			<https://semlar.com/>
+			*Mainly known for Zaw, Kitgun and Amp calculators as well as listing Riven dispositions and possible stats.*`)
 			msg.react("✅")
 		} catch (error) {
 			console.error(error)
