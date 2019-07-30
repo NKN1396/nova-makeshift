@@ -1,5 +1,4 @@
 const Command = require("../../utils/novaCommand")
-const hint = `The command is called \`${"!"}${"video"}\` and not \`${"!"}${"voice"}\`, but here's the link anyway:`
 
 module.exports = class extends Command {
 	constructor(client) {
