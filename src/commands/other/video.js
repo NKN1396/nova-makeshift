@@ -1,11 +1,12 @@
 const Command = require("../../utils/novaCommand")
+const hint = `The command is called \`${"!"}${"video"}\` and not \`${"!"}${"voice"}\`, but here's the link anyway:`
 
 module.exports = class extends Command {
 	constructor(client) {
 		let options = {
 			group: "other",
 			name: "video",
-			aliases: [ "webcame" ],
+			aliases: ["webcam", "voice"],
 			description: "Requests a video link for the current voice channel."
 		}
 		super(client, options)
@@ -14,8 +15,8 @@ module.exports = class extends Command {
 	async run(message) {
 		if(!message.guild) return
 		try {
-			if(message.member.voiceChannel) {
-				await message.channel.send(`<https://discordapp.com/channels/${message.guild.id}/${message.member.voiceChannel.id}>`)
+			if(message.member.voice.channel) {
+				await message.channel.send(`<https://discordapp.com/channels/${message.guild.id}/${message.member.voice.channel.id}>`)
 				message.react("✅")
 			} else {
 				await message.channel.send("You're not in a voice channel!")
