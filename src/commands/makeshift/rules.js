@@ -1,5 +1,6 @@
 const Command = require("./../../utils/makeshiftCommand")
 const { oneLine, stripIndents } = require("common-tags")
+var prefix
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -11,6 +12,7 @@ module.exports = class extends Command {
 			argsType: "multiple"
 		}
 		super(client, options)
+		prefix = client.commandPrefix
 	}
 
 	async run(message, args) {
@@ -43,7 +45,7 @@ const rules = {
 	\`5.\` Up to 14 days of unannounced inactivity are okay
 	\`6.\` Leaving the Discord means leaving the community
 
-	*A more elaborate explanation of each rule can be acquired by issuing the command with the number of the rule (e.g. \`rule 1\`).*`,
+	*A more elaborate explanation of each rule can be acquired by issuing the command with the number of the rule (e.g. \`${prefix}rule 1\`).*`,
 	children: {
 		"1": {
 			label: "__**Rule 1: Use common sense**__\n" +
@@ -105,7 +107,7 @@ const rules = {
 			\`6.\` Include your ign
 			\`7.\` You may stay
 			
-			*A more elaborate explanation of the rules can be acquired by issuing the \`/rules\` command with the number of the rule (e.g. \`/rule 1\`).*`,
+			*A more elaborate explanation of the rules can be acquired by issuing the \`${prefix}rules\` command with the number of the rule (e.g. \`${prefix}rule 1\`).*`,
 			children: {
 				"1": {
 					label: "__**Rule 1: Use common sense** *(general rule)*__\n"+
@@ -126,7 +128,7 @@ const rules = {
 				"4": {
 					label: "__**Rule 4: 14 days** *(clan/ingame)*__\n" +
 					oneLine`*More than 14 days of inactivity will get you expelled from the clan.
-					Send one of the mods a DM if you can\'t play for prolonged periods.`
+					Send one of the mods a DM if you can't play for prolonged periods.`
 				},
 				"5": {
 					label: "__**Rule 5: Use the right channels** *(Discord rule)*__\n" +
