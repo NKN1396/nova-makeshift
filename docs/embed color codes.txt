@@ -1,0 +1,15 @@
+Colors:
+-----
+
+Normal:
+Gray - Embeds (memes)
+
+Modlogs
+Green - Join
+Yellow - Leave
+Blue - Rename
+Red - Ban
+Orange - Mute / Channel lock
+
+Messagelogs
+Yellow - Warn
