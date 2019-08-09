@@ -1,4 +1,5 @@
 const Command = require("./../../utils/novaCommand")
+const {stripIndents} = require ("common-tags")
 
 module.exports = class extends Command {
 	constructor(client) {
@@ -35,7 +36,12 @@ module.exports = class extends Command {
 						},
 						{
 							name: "WFCD builds channel",
-							value: "\\> [Click here](https://discordapp.com/channels/77176186148499456/150312340590428160) < - The builds channel on the Warframe community Discord. Very active and has many people willing to help with your build.\n*(To join the WFCD \\> [click here](https://discord.gg/warframe) <)*"
+							value: stripIndents`\\> [Click here](https://discordapp.com/channels/77176186148499456/150312340590428160) < - The builds channel on the Warframe community Discord. Very active and has many people willing to help with your build.
+							\\> use \`${message.guild.commandPrefix}wfcd\` for more info < - The WFCD has a channel and many experienced players dedicated to helping out with your builds. Feel free to ask for help.`
+						},
+						{
+							name: "Warframe Teaching Archives",
+							value: `\\> use \`${message.guild.commandPrefix}archives\` for more info < - A Discord server with curated Warframe builds. This is where the fancy images come from.`
 						}
 					]
 				}
